@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Câu 3</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="form">
+      <div class="mainForm">
+        <div class="title">Phiếu đặt phòng</div>
+        <div class="formBody">
+          <div class="input">
+            <div class="label">Họ tên *</div>
+            <input id="nameInputID" type="text" />
+          </div>
+          <div class="input">
+            <div class="label">Địa chỉ</div>
+            <input id="addressInputID" type="text" />
+          </div>
+          <div class="input">
+            <div class="label">Số chứng minh nhân dân *</div>
+            <input id="PIDInputID" type="text" />
+          </div>
+          <div class="input">
+            <div class="label">Mức giá</div>
+            <select name="prices" id="prices">
+              <option value="normal">Loại thường</option>
+              <option value="special">Loại đặc biệt</option>
+            </select>
+          </div>
+          <div class="dateBox">
+            <div class="inputDate inputCheck-In">
+              <div class="label">Ngày thuê</div>
+              <input type="date" name="check-inDate" id="check-inDate" />
+            </div>
+            <div class="inputDate inputCheck-Out">
+              <div class="label">Ngày trả</div>
+              <input type="date" name="check-outDate" id="check-outDate" />
+            </div>
+          </div>
+          <div class="input">
+            <div class="label">Dịch vụ đi kèm</div>
+            <div>
+              <input type="checkbox" id="breakfast" name="breakfast" value="breakfast" />
+              Ăn sáng
+            </div>
+            <div>
+              <input type="checkbox" id="laundry" name="laundry" value="laundry" />
+              Giặt ủi
+            </div>
+            <div>
+              <input type="checkbox" id="morningNewspaper" name="morningNewspaper" value="morningNewspaper" />
+              Báo buổi sáng
+            </div>
+          </div>
+          <div class="input">
+            <div class="label">Tiền thuê phòng</div>
+            <input type="text" />
+            VND
+          </div>
+          <button class="btn">Tính đơn giá</button>
+          <button id="submitBtn" class="btn">Đăng ký</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
