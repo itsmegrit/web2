@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+}
+.Header {
+  display: block;
+  background-color: white;
+  /* max-height: 100px;
+    max-width: 100%; */
+  height: 300px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: solid black;
+}
+.Topmenu {
+  border: solid black;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.Topmenu a {
+  background-color: white;
+  display: inline;
+  margin-right: 20px;
+  border: solid black;
+  padding: 10px;
+}
+.Topmenu li {
+  display: inline;
+}
+/* .Topmenu ul a:nth-child(2n){
+    background-color: yellow;
+}
+.Topmenu ul a:nth-child(2n+1){
+    background-color: greenyellow;
+} */
+.Topmenu ul a {
+  background-color: greenyellow;
+  font-weight: 1000;
+}
+.Topmenu ul a:hover {
+  background-color: yellow;
+}
+.mid-left {
+  background-color: white;
+  width: 20%;
+  height: 800px;
+  float: left;
+  border: solid black;
+  overflow: auto;
+}
+.mid-left div {
+  border: solid black;
+  padding: 10px;
+  margin: 10px;
+  font-weight: 1000;
+}
+.mid-left div:hover {
+  background-color: antiquewhite;
+}
+/* .mid-left div:last-child{
+    background-color: yellow;
+}
+.mid-left div:first-child{
+    background-color: yellow;
+} */
+.mid-left div {
+  background-color: aqua;
+}
+.mid-right {
+  height: 800px;
+  width: 18%;
+  float: left;
+  border: solid black;
+}
+.mid-mid {
+  width: 60%;
+  height: 800px;
+  padding: 20px;
+  position: relative;
+  /* overflow: auto; */
+  border: solid black;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+}
+.mid-mid-one {
+  display: flex;
+  width: 100%;
+}
+.mid-mid-one div {
+  color: aliceblue;
+  display: block;
+  background-color: blueviolet;
+  margin-right: 20px;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}
+.mid-mid-two {
+  display: flex;
+  width: 100%;
+}
+.mid-mid-two div {
+  background-color: blueviolet;
+  width: 100%;
+  color: aliceblue;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.mid-mid-three {
+  display: flex;
+  width: 100%;
+}
+.mid-mid-three div {
+  display: block;
+  color: aliceblue;
+  background-color: blueviolet;
+  margin-right: 20px;
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  align-content: center;
+  text-align: center;
+}
+.mid-mid-four {
+  display: flex;
+  width: 100%;
+}
+.mid-mid-four div {
+  background-color: blueviolet;
+  width: 100%;
+  color: aliceblue;
+  height: 100px;
+  line-height: 100px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* .mid-mid div{
+    border: solid black;
+    height: 250px;
+    width: 200px;
+    float: left;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-left: 50px;
+} */
+@media screen and (max-width: 650px) {
+  .Topmenu a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    margin-bottom: 5px;
+  }
+  .mid-right {
+    display: none;
+  }
+  .mid-left {
+    width: 30%;
+  }
+  .mid-mid {
+    width: 67%;
+  }
+  /* .left div{
+        border: solid black;
+        height: 30px;
+        width: 80px;
+        margin-top: 60px;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+    } */
+}
+.Footer {
+  background-color: white;
+  border: solid black;
+  height: 100px;
+  clear: both;
+}
+/* @media screen and (max-width: 600px){
+    .Header li{
+        display: inline;
+        margin-right: 20px;
+        position: relative;
+        top: 80px;
+        left: 170px;
+    }
+} */
+/* @media screen and (max-width: 800px) {
+    .left div{
+        border: solid black;
+        height: 30px;
+        width: 80px;
+    }
+    .Header{
+        width: 100%;
+    }
+    .menu{
+        height: 800px;
+        width: 100%;
+        background-color: aqua;
+    }
+    .menu div{
+        height: 250px;
+        width: 200px;
+    }
+}  */
