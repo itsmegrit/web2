@@ -2,19 +2,19 @@
     if (isset($_GET["id"])) {
       switch ($_GET["id"]) {
         case "homePage":
-          echo "Trang chu";
+          echo "Nội dung trang chủ";
           break;
         case "info1":
-          echo "Tuyển sinh";
+          echo "Nội dung trang thông tin tuyển sinh";
           break;
         case "info2":
-          echo "Đào tạo";
+          echo "Nội dung trang thông tin đào tạo";
           break;
         case "contact":
-          echo "Liên hệ";
+          echo "Nội dung trang liên hệ";
           break;
         default:
-          echo "Err";
+          echo "Lỗi";
           break;
       }
     } else {
