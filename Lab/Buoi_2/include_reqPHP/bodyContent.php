@@ -1,4 +1,3 @@
-  <div class="mid-mid">
     <?php
     if (isset($_GET["id"])) {
       switch ($_GET["id"]) {
@@ -22,4 +21,3 @@
       echo "Mặc định";
     }
     ?>
-  </div>

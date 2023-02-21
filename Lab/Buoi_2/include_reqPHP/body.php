@@ -7,7 +7,9 @@
     <div class="function5">Khoa CNTT</div>
     <div class="function6">Liên hệ Admin</div>
   </div>
-  <?php include 'bodyContent.php';
-  ?>
+  <div class="mid-mid">
+    <?php include 'bodyContent.php';
+    ?>
+  </div>
   <div class="mid-right"></div>
 </div>

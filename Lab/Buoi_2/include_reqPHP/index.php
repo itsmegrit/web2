@@ -18,8 +18,10 @@
     <?php include 'footer.php';
     ?>
   </div>
-  <!-- <script src="Test4.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
+  </script>
+  <script src="script.js">
+  </script>
 </body>
 
 </html>
-<!-- ..\ trỏ tập tin thấp cấp hơn tập tin còn lại -->

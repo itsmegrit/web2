@@ -1,16 +1,16 @@
 <div class="Header"></div>
 <div class="Topmenu">
   <ul>
-    <a href="index.php?id=homePage">
+    <a id="homePage" href="#">
       <li>Trang chủ</li>
     </a>
-    <a href="index.php?id=info1">
+    <a id="info1" href="#">
       <li>Thông tin tuyển sinh</li>
     </a>
-    <a href="index.php?id=info2">
+    <a id="info2" href="#">
       <li>Thông tin đào tạo</li>
     </a>
-    <a href="index.php?id=contact">
+    <a id="contact" href="#">
       <li>Liên hệ</li>
     </a>
   </ul>
