@@ -142,15 +142,11 @@
   margin-bottom: 20px;
   text-align: center;
 }
-/* .mid-mid div{
-    border: solid black;
-    height: 250px;
-    width: 200px;
-    float: left;
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-left: 50px;
-} */
+
+.mid-left div:hover {
+  background-color: black;
+}
+
 @media screen and (max-width: 650px) {
   .Topmenu a {
     display: block;
