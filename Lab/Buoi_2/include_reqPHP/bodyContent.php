@@ -13,6 +13,9 @@
         case "contact":
           echo "Nội dung trang liên hệ";
           break;
+        case "idTinhToan":
+          include 'tinhToan.php';
+          break;
         default:
           echo "Lỗi";
           break;
