@@ -7,6 +7,7 @@
     <div class="lblSoB">Số b: </div>
     <input id="idSoB" name="soB" type="text">
   </div>
+  <div id="ketQua">Kết quả: </div>
   <select name="phepTinh" id="idSelPhepTinh">
     <option value="Cong">+</option>
     <option value="Tru">-</option>

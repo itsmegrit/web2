@@ -11,15 +11,16 @@ $(".direction").click(function () {
   });
 });
 
-$("#idFrmTinh").submit(function (e) {
-  e.preventDefault();
-  var form = $(this);
-  $.ajax({
-    type: "GET",
-    url: "xuLyTinhToan.php",
-    data: form.serialize(),
-    success: function (result) {
-      $("#tinhToanArea").html(result);
-    },
+$(document).ready(function () {
+  jQuery("#idFrmTinh").submit(function (e) {
+    $.ajax({
+      type: "GET",
+      url: "xuLyTinhToan.php",
+      data: $(this).serialize(),
+      success: function (result) {
+        $("#ketQua").html(result);
+      },
+    });
+    e.preventDefault();
   });
 });
