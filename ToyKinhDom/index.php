@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./includes/commonStyle.css">
   <link rel="stylesheet" href="./public_html/header/headerStyle.css">
   <link rel="stylesheet" href="./public_html/body/bodyStyle.css">
-  <link rel="stylesheet" href="./includes/footer/footerStyle.css">
+  <link rel="stylesheet" href="./public_html/footer/footerStyle.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
@@ -28,7 +28,7 @@
 
   <div id="footer">
     <?php
-    include('./includes/footer/footer.php')
+    include('./public_html/footer/footer.php')
       ?>
   </div>
 </body>
