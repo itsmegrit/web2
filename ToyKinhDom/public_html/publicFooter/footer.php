@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6 footerform" >
+    <div class="col-sm-6 footerform">
       <h6>ĐĂNG KÍ NHẬN THÔNG TIN KHUYẾN MÃI</h6>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Nhập email">
@@ -14,7 +14,7 @@
       <div class="social">
         <a href="#"><img src="../img/facebook.png" class="img-rounded" alt="Cinque Terre"></a>
         <a href="#"><img src="../img/instagram.png" class="img-rounded" alt="Cinque Terre"></a>
-        <a href="#"> <img src="../img/youtube.png" class="img-circle" alt="Cinque Terre"></a>
+        <a href="#"> <img src="../img/facebook.png" class="img-circle" alt="Cinque Terre"></a>
       </div>
     </div>
   </div>

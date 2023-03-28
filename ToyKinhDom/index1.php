@@ -12,26 +12,27 @@
   <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap-utilities.min.css">
   <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap.rtl.min.css">
-  <link rel="stylesheet" href="./public_html/body/bodyStyle.css">
-  <link rel="stylesheet" href="./public_html/footer/footerStyle.css">
+  <link rel="stylesheet" href="./public_html/publicHeader/headerStyle.css">
+  <link rel="stylesheet" href="./public_html/publicBody/bodyStyle.css">
+  <link rel="stylesheet" href="./public_html/publicFooter/footerStyle.css">
 </head>
 
 <body>
   <div id="header">
     <?php
-    include('./public_html/header/header.php')
+    include('./public_html/publicHeader/header.php')
       ?>
   </div>
 
   <div id="body">
     <?php
-    include('./public_html/body/body.php');
+    include('./public_html/publicBody/body.php');
     ?>
   </div>
 
   <div id="footer">
     <?php
-    include('./public_html/footer/footer.php')
+    include('./public_html/publicFooter/footer.php')
       ?>
   </div>
 </body>

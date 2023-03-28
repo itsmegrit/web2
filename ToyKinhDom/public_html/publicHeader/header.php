@@ -1,5 +1,3 @@
-<!-- Header -->
-
 <div class="commonLayout header">
   <div class="headerLeft">
     <div class="headerLogo">Logo here</div>
