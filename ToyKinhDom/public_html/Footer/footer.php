@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 footerform" >
       <h6>ĐĂNG KÍ NHẬN THÔNG TIN KHUYẾN MÃI</h6>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Nhập email">
@@ -9,7 +9,7 @@
         </button>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 footerform">
       <h6>THEO DÕI</h6>
       <div class="social">
         <a href="#"><img src="../img/facebook.png" class="img-rounded" alt="Cinque Terre"></a>
@@ -30,13 +30,13 @@
         </svg><a href="">hotro@toykingdom.com.vn</a>
       </p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 footerform">
       <h5>HOTLINE CHĂM SÓC KHÁCH HÀNG</h5>
       <p><a href="#">- Chính sách giao hàng</a></p>
       <p><a href="#">- Chính sách tích lũy điểm</a></p>
       <p><a href="#">- Điều khoản điều kiện</a></p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 footerform">
       <h5>HỖ TRỢ KHÁCH HÀNG</h5>
       <p><a href="#">- Chính sách bảo mật</a></p>
       <p><a href="#">- Chính sách bảo hành đổi trả hàng hóa</a></p>
