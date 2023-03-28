@@ -1,62 +1,57 @@
-/* .footer {
-  padding: 10px;
-  min-height: 120px;
-} */
-
 .container-fluid {
-    background-color: rgb(139, 138, 138);
+  background-color: rgb(139, 138, 138);
 }
 
 .input-group {
-    width: 40%;
+  width: 40%;
 }
 
 .btn {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 .btn:hover {
-    background-color: red;
+  background-color: red;
 }
 
 .input-group img {
-    width: 50%;
+  width: 50%;
 }
 
 h6 {
-    color: aliceblue;
+  color: aliceblue;
 }
 
 h3 {
-    color: red;
+  color: red;
 }
 
 h5 {
-    color: aliceblue;
+  color: aliceblue;
 }
 
 .social a {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .col-sm-15 img {
-    width: 10%;
-    height: 80%;
-    position: relative;
-    left: 50%;
+  width: 10%;
+  height: 80%;
+  position: relative;
+  left: 50%;
 }
 
 .footer-reserved {
-    position: relative;
-    left: 52%;
+  position: relative;
+  left: 52%;
 }
 
 .row .col-sm-4 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .row .col-sm-4 a:hover {
-    color: red;
-    opacity: 0.5s;
+  color: red;
+  opacity: 0.5s;
 }
