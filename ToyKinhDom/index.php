@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="./public_html/header/headerStyle.css">
   <link rel="stylesheet" href="./public_html/body/bodyStyle.css">
   <link rel="stylesheet" href="./public_html/footer/footerStyle.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap-utilities.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-5.3.0-alpha1/bootstrap-5.3.0-alpha1/dist/css/bootstrap.rtl.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
