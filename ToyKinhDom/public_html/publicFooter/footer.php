@@ -5,16 +5,16 @@
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Nhập email">
         <button class="btn btn-primary " id="btn-email">
-          <img src="../img/icons8-secured-letter-50.png" class="img-rounded" alt="Cinque Terre" id="email">
+          <img src="./public_html/img/icons8-secured-letter-50.png" class="img-rounded" alt="Cinque Terre" id="email">
         </button>
       </div>
     </div>
     <div class="col-sm-6 footerform">
       <h6>THEO DÕI</h6>
       <div class="social">
-        <a href="#"><img src="../img/facebook.png" class="img-rounded" alt="Cinque Terre"></a>
-        <a href="#"><img src="../img/instagram.png" class="img-rounded" alt="Cinque Terre"></a>
-        <a href="#"> <img src="../img/facebook.png" class="img-circle" alt="Cinque Terre"></a>
+        <a href="#"><img src="./public_html/img/facebook.png" class="img-rounded" alt="Cinque Terre"></a>
+        <a href="#"><img src="./public_html/img/instagram.png" class="img-rounded" alt="Cinque Terre"></a>
+        <a href="#"> <img src="./public_html/img/youtube.png" class="img-circle" alt="Cinque Terre"></a>
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
   </div>
   <div class="row">
     <div class="col-sm-15">
-      <img class="img-responsive" src="../img/logoSaleNoti.png" alt="Chania" id="">
+      <img class="img-responsive" src="./public_html/img/logoSaleNoti.png" alt="Chania" id="">
     </div>
   </div>
   <div class="row">
