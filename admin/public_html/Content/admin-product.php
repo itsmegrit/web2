@@ -1,8 +1,9 @@
-<form class="admin-product">
+<div class="admin-product">
     <div class="admin-product-title"><label>Quản lý sản phẩm</label></br>
     <a href="admin.php?id=sp&action=add" class="admin-product-button-add" style="text-decoration: none;">+ Thêm<a>
     </div>
     <div class="admin-div-table-product">
+        <input type="hidden" name="id" value="sp">
     <table class="admin-table-product" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
         <tr>
             <th>Mã sản phẩm</th>
@@ -12,40 +13,41 @@
             <th>Chức năng</th>
         </tr>
        <?php 
-/*            $servername = "localhost";
-            $username = "QLBH";
-            $password = "123456";
-            $dbname = "web2";
-            
+            include '..\\config/Connect.php';
+            include 'admin-product-del.php';
             // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
-            
+            $conn = openConnect();
+            // Check connection      
             $sql = "SELECT * FROM Product";
             $result = $conn->query($sql);
-            
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
                 echo "<tr>
-                    <td>$row[ID_Product]</td>
-                    <td>$row[ProductName]</td>
-                    <td>$row[ProductPrice]</td>
-                    <td>$row[Product]</td>
-                    <td><input type='submit' value='Thêm'></td>
+                    <td>$row[ID]</td>
+                    <td>$row[Name]</td>
+                    <td>$row[Price]</td>
+                    <td>$row[ID_Category]</td>
+                    <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' name='function' value='Xóa'>
+                    <input type='submit' value='Sửa' id='$row[ID]'><input type='hidden' name='id' value='sp'>
+                    <input type='hidden' name='idproduct' value='$row[ID]'>
+                    </td>
                 </tr>";
               }
-            } else {
-              echo "0 results";
-
             }
-            $conn->close();*/
+            $conn->close();
         ?>
     </table>
     </div>
+    <script>
+        function Del(){
+            Chosse=confirm("Bạn chắc chắn xóa sản phẩm này ?")
+            if(Chosse){
+                return true
+            }
+            return false
+        }
+    </script>
     <style>
         .admin-product-title{
             text-align: center;
@@ -78,5 +80,10 @@
         .admin-product-button-add:hover{
             background-color: chartreuse;
         }
+        @media screen and (max-width: 1150px) {
+            .admin-product-button-add{
+                margin-left: 70%;
+            }
+}
     </style>
-</form>
+</div>

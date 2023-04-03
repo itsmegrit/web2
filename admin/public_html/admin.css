@@ -56,12 +56,24 @@
     margin-right: 5px;
     margin-bottom: 20px;
 }
-
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1150px) {
     .admin-mid-left{
-        width: 30%;
+        width: 19%;
     }
-    .admin-mid{
-        width: 67%;
+    .admin-mid-content{
+        width: 75%;
     }
+    .admin-header-button{
+        margin-left: 80%;
+        width: 15%;
+    }
+    /* .left div{
+        border: solid black;
+        height: 30px;
+        width: 80px;
+        margin-top: 60px;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+    } */
 }
