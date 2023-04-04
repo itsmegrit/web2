@@ -1,16 +1,38 @@
 <?php
-function openConnect(){
-    $servername="localhost";
-    $username="QLBH"; 
-    $password="123456";
-    $dbname="web2";
-    $conn=new mysqli($servername,$username, $password,$dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+class Connect{
+    public $conn;
+    function __construct(){
+        $servername="localhost";
+        $username="QLBH"; 
+        $password="123456";
+        $dbname="web2";
+        $this->conn=new mysqli($servername,$username, $password,$dbname);
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
+        }
     }
-    return $conn;
-}
-function closeConnect($conn){
-    $conn->close();
+    function closeConnect(){
+        $this->conn->close();
+    }
+    function selectsql($table,$colum="*",$condition=null){
+        $sql="SELECT $colum from $table $condition";
+        $result=$this->conn->query($sql);
+        return $result;
+    }
+    function delsql($table,$id){
+        $sql="DELETE from $table where id='$id'";
+        $result= $this->conn->query($sql);
+        return $result;
+    }
+    function editsql($table,$id,$edit){
+        $sql="UPDATE $table SET $edit where $id";
+        $result= $this->conn->query($sql);
+        return $result;
+    }
+    function insertsql($table,$data){
+        $sql="INSERT INTO $table $data";
+        $result= $this->conn->query($sql);
+        return $result;
+    }
 }
 ?>

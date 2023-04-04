@@ -1,11 +1,12 @@
 <?php 
     if(isset($_GET["function"])=="Xóa"){
-        $conn = openConnect();
+        $conn = new Connect();
+        //Chỉnh sửa tình trạng của sản phẩm để lưu lại dữ liệu được xóa
         $sql = "DELETE FROM Product where id='$_GET[idproduct]'";
-        $result = $conn->query($sql);
+        $result = $conn->delsql("Product","$_GET[idproduct]");
         if(!$result){
             echo "Xóa không thành công";
         }            
-            $conn->close();
+            $conn->closeConnect();
         }       
 ?>

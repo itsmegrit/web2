@@ -1,9 +1,12 @@
 <form name="AdminProductEdit" onsubmit="return EditProduct()" class="AdminProductEdit" action="admin.php">
             <a href="admin.php?id=sp" class="admin-product-Edit-back" style="text-decoration: none;"><< Trở về<a> 
         <div class="AdminProductEditTitle">
-            <label style="font-size: 30px;">Thêm sản phẩm</label></br>
+            <label style="font-size: 30px;">Chỉnh sửa sản phẩm</label></br>
         </div>
         <div class="AdminProductEditDetail">
+            <?php 
+            
+            ?>
             <label>Tên sản phẩm: </label></br>
             <input type="text" name="AdmintxtProductname" placeholder="Nhập tên sản phẩm"  class="AdmintxtProductname"></br>
             <label>Thể loại: </label></br>

@@ -16,10 +16,9 @@
             include '..\\config/Connect.php';
             include 'admin-product-del.php';
             // Create connection
-            $conn = openConnect();
+            $conn =new Connect();
             // Check connection      
-            $sql = "SELECT * FROM Product";
-            $result = $conn->query($sql);
+            $result = $conn->selectsql("Product");
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
@@ -35,7 +34,7 @@
                 </tr>";
               }
             }
-            $conn->close();
+            $conn->closeConnect();
         ?>
     </table>
     </div>

@@ -73,6 +73,7 @@
     </style>
     <script>
         function AddProduct(){
+            //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
             var Productname=document.AdminProductAdd.AdmintxtProductname
             var Price=document.AdminProductAdd.AdmintxtPrice
             var Provide=document.AdminProductAdd.AdmintxtProvide
@@ -175,9 +176,8 @@
     $unitproduce=$_GET["AdmintxtUnitProduce"];
     $detail=$_GET["AdmintxtDetail"];
     $quantity=$_GET["AdmintxtQuantity"];
-    $sql="INSERT INTO TABLE product ($productname,$price,$category,$provide,$unitproduce,$detail,$quantity)";
-    $conn = openConnect();
-    if($conn->query($sql)){
+    $conn =new Connect();
+    if($conn->insertsql("Product","('$productname','$price','$category','$provide','$unitproduce','$detail','$quantity')")){
         //Thành công
     }
     else{
