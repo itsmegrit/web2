@@ -20,13 +20,20 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $db = new Database();
     $res = $db->select("taikhoan", "*", 'tendn = "' . $_POST['username'] . '" and matkhau= "' . $_POST['password'] . '"');
     if (sizeof($res) > 0) {
+      // echo "Ten tai khoan: " . $res[0]['tendn'];
+
+      if ($res[0]['quyen'] == 0) {
+        session_start();
+        $_SESSION['ssUsername'] = $_POST['username'];
+        echo "Ten tai khoan: " . $res[0]['tendn'];
+      } else {
+        header("Location:../quantri.php");
+      }
     } else {
       header("Location:../dangnhap.php?error=Sai thông tin đăng nhập!");
     }
-    $db->__destruct();
   }
 } else {
   header("Location:../dangnhap.php");
 }
-
 ?>
