@@ -27,9 +27,9 @@
                     <td>$row[Name]</td>
                     <td>$row[Price]</td>
                     <td>$row[ID_Category]</td>
-                    <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' name='function' value='Xóa'>
-                    <input type='submit' value='Sửa' id='$row[ID]'><input type='hidden' name='id' value='sp'>
-                    <input type='hidden' name='idproduct' value='$row[ID]'>
+                    <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-product-del' name='function' value='Xóa'>
+                    <a href='admin.php?id=sp&&action=edit&&idproduct=$row[ID]' class='admin-product-Edit' style='text-decoration: none;'>Sửa<a> 
+                    <input type='hidden' name='id' value='sp'>
                     </td>
                 </tr>";
               }
@@ -68,6 +68,17 @@
             border-radius: 10px;
             border: solid 1px rgb(200, 200, 200);
         }
+        .admin-product-Edit{
+            padding: 3px 10px;
+            font-size: 15px;
+            color: black;
+            background-color: aqua;
+            border-radius: 5px;
+            border: solid 1px black;
+        }
+        .admin-product-Edit:hover{
+            background-color: blue;
+        }
         .admin-product-button-add{
             margin-left: 90%;
             padding: 5px;
@@ -78,6 +89,16 @@
         }
         .admin-product-button-add:hover{
             background-color: chartreuse;
+        }
+        .admin-product-del{
+            padding: 3px 10px;
+            background-color: red;
+            color: white;
+            border: solid 1px black;
+            border-radius: 5px;
+        }
+        .admin-product-del:hover{
+            background-color: brown;
         }
         @media screen and (max-width: 1150px) {
             .admin-product-button-add{

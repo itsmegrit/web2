@@ -1,7 +1,6 @@
-<div class="MainAdminAccountAdd">
-        <form name="AdminAccountAdd" onsubmit="return AddAccount()" class="AdminAccountAdd">
+<form name="AdminAccountAdd" onsubmit="return AddAccount()" class="AdminAccountAdd">
         <div class="AdminAccountAddBar">
-            <div class="AdminAccountAddClose">X</div>
+        <a href="admin.php?id=tk" class="admin-account-add-back" style="text-decoration: none;"><< Trở về<a> 
         </div>    
         <div class="AdminAccountAddTitle">
             <label style="font-size: 30px;">Thêm tài khoản</label></br>
@@ -17,17 +16,10 @@
             <input type="text" name="AdmintxtEmail"></br>
             <input type="hidden" name="AdmintxtAlert" readonly disabled style="border: white;color: red;"></br>
             <input type="submit" name="AdminAccountAddDetailSubmit" value="Thêm">
+            <input type="hidden" name="id" value="tk"></br>
         </div>
-    </form>
     </div>
     <style>
-        .MainAdminAccountAdd{
-            width: 100%;
-            height: 1000px;
-            position: fixed;
-            background-color: rgba(240,240,240, 0.5);
-            z-index: 10;
-        }
         .AdminAccountAdd{
             width: 50%;
             height: 50%;

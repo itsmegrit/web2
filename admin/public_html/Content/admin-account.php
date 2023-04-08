@@ -30,13 +30,16 @@
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
-                echo '<tr>
-                    <td>'.$row["ID_Account"].'</td>
-                    <td>'.$row["Username"].'</td>
-                    <td>'.$row["Password"].'</td>
-                    <td>'.$row["ID_Permission"].'</td>
-                    <td><input type="submit" value="Xóa" id="'.$row["ID_Account"].'"></td>
-                </tr>';
+                echo "<tr>
+                    <td>$row[ID_Account]</td>
+                    <td>$row[Username]</td>
+                    <td>$row[Password]</td>
+                    <td>$row[ID_Permission]</td>
+                    <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-account-del' name='function' value='Xóa'>
+                    <a href='admin.php?id=sp&&action=edit' class='admin-account-Edit' style='text-decoration: none;'>Sửa<a> 
+                    <input type='hidden' name='id' value='sp'>
+                    </td>
+                </tr>";
               }
             } else {
               echo "0 results";
@@ -80,5 +83,31 @@
         .admin-account-button-add:hover{
             background-color: chartreuse;
         }
+        .admin-account-Edit{
+            padding: 3px 10px;
+            font-size: 15px;
+            color: black;
+            background-color: aqua;
+            border-radius: 5px;
+            border: solid 1px black;
+        }
+        .admin-account-Edit:hover{
+            background-color: blue;
+        }
+        .admin-account-del{
+            padding: 3px 10px;
+            background-color: red;
+            color: white;
+            border: solid 1px black;
+            border-radius: 5px;
+        }
+        .admin-account-del:hover{
+            background-color: brown;
+        }
+        @media screen and (max-width: 1150px) {
+            .admin-account-button-add{
+                margin-left: 70%;
+            }
+}
     </style>
 </form>

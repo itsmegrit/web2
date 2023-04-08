@@ -10,20 +10,9 @@
             <th>Chức năng</th>
         </tr>
        <?php 
-/*          $servername = "localhost";
-            $username = "QLBH";
-            $password = "123456";
-            $dbname = "web2";
-            
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
-            
-            $sql = "SELECT * FROM permission";
-            $result = $conn->query($sql);
+       include '..\\config/Connect.php';
+       $conn=new Connect();
+        $result = $conn->selectsql("Permission");
             
             if ($result->num_rows > 0) {
               // output data of each row
@@ -40,7 +29,7 @@
               echo "0 results";
 
             }
-            $conn->close();*/
+            $conn->closeConnect();
         ?>
     </table>
     </div>

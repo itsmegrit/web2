@@ -6,6 +6,26 @@
         <div class="AdminProductAddDetail">
             <label>Tên sản phẩm: </label></br>
             <input type="text" name="AdmintxtProductname" placeholder="Nhập tên sản phẩm"  class="AdmintxtProductname"></br>
+            <?php 
+            // include '..\\config/Connect.php';
+            // $con=new Connect();
+            // $result=$con->selectsql("Category");
+            //1 sản phẩm thuộc nhiều thể loại
+            // if($result->num_rows>0){
+            //     while($row=$result->fetch_assoc()){
+            //         echo "<input type='checkbox' name='AdmintxtProductCategory' value='$row[ID]' class='AdmintxtProductCategory'>$row[Name]</br>";
+            //     }
+            // }
+            //1 sản phẩm thuộc 1 thể loại
+            // echo "<select name='AdmintxtProductCategory'>";
+            // if($result->num_rows>0){
+            //     while($row=$result->fetch_assoc()){
+            //         echo "<option value='$row[ID]'>$row[Name]</option>";
+            //     }
+            // }
+            // echo "</select>";
+            
+        ?>
             <label>Thể loại: </label></br>
             <input type="text" name="AdmintxtProductCategory" placeholder="Nhập thể loại của sản phẩm" class="AdmintxtProductCategory"></br>
             <label>Giá bán: </label></br>

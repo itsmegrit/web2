@@ -5,9 +5,53 @@
         </div>
         <div class="AdminProductEditDetail">
             <?php 
-            
-            ?>
+            include '..\\config/Connect.php';
+            $con=new Connect();
+            $result=$con->selectsql("product","*","where id='$_GET[idproduct]'");
+            //Phần thể loại chưa thể hiện checkbox hoặc select 
+            //Chưa có dữ liệu để thể hiện GUI
+            if($result->num_rows==1){
+                $row=$result->fetch_assoc();
+            echo "<label>Mã sản phẩm: </label></br>
+            <input type='text' name='AdmintxtAlert' value='$row[ID]' readonly disabled></br>
             <label>Tên sản phẩm: </label></br>
+            <input type='text' name='AdmintxtProductname' value='$row[Name]' class='AdmintxtProductname'></br>
+            <label>Thể loại: </label></br>
+            <input type='text' name='AdmintxtProductCategory' class='AdmintxtProductCategory'></br>
+            <label>Giá bán: </label></br>
+            <input type='text' name='AdmintxtPrice' value='$row[price]' class='AdmintxtPrice'></br>
+            <label>Nhà cung cấp: </label></br> 
+            <input type='text' name='AdmintxtProvide' name='AdmintxtProvide' class='AdmintxtProvide'></br>
+            <label>Đơn vị sản xuất: </label></br> 
+            <input type='text' name='AdmintxtUnitProduce' name='AdmintxtUnitProduce' class='AdmintxtUnitProduce'></br>
+            <label>Mô tả chi tiết: </label></br> 
+            <input type='text' name='AdmintxtDetail' name='AdmintxtDetail' class='AdmintxtDetail'></br>
+            <div class='AdminEditProductIamge'>
+            <label>Hình ảnh 1: </label></br>
+            <input type='file' name='AdmintxtIamge1' class='AdmintxtIamge1' data-multiple-caption='{count} files selected' 
+                    accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='1'>
+            <img id='image1'></br>
+            <label>Hình ảnh 2: </label></br>
+            <input type='file' name='AdmintxtIamge2' class='AdmintxtIamge2' data-multiple-caption='{count} files selected'
+                    accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='2'>
+            <img id='image2'></br>
+            <label>Hình ảnh 3: </label></br>
+            <input type='file' name='AdmintxtIamg3' class='AdmintxtIamge3' data-multiple-caption='{count} files selected'
+                    accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='3'>
+            <img id='image3'></br>
+            <label>Hình ảnh 4: </label></br>
+            <input type='file' name='AdmintxtIamge4' class='AdmintxtIamg4' data-multiple-caption='{count} files selected'
+                    accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='4'>
+            <img id='image4'>
+            </div>
+            <label>Số lượng tồn: </label></br> 
+            <input type='text' name='AdmintxtQuantity' class='AdmintxtQuantity'></br>
+            <input type='hidden' name='AdmintxtAlert' readonly disabled style='border: white;color: red;'></br>
+            <input type='hidden' name='id' value='sp'></br>
+            <input type='submit' name='AdminProductEditDetailSubmit' class='AdminProductEditButton' value='Chỉnh sửa'>";
+            }
+            ?>
+            <!-- <label>Tên sản phẩm: </label></br>
             <input type="text" name="AdmintxtProductname" placeholder="Nhập tên sản phẩm"  class="AdmintxtProductname"></br>
             <label>Thể loại: </label></br>
             <input type="text" name="AdmintxtProductCategory" placeholder="Nhập thể loại của sản phẩm" class="AdmintxtProductCategory"></br>
@@ -41,7 +85,7 @@
             <input type="text" name="AdmintxtQuantity" placeholder="Nhập số lượng tồn" name="AdmintxtQuantity" class="AdmintxtQuantity"></br>
             <input type="hidden" name="AdmintxtAlert" readonly disabled style="border: white;color: red;"></br>
             <input type="hidden" name="id" value="sp"></br>
-            <input type="submit" name="AdminProductEditDetailSubmit" class="AdminProductEditButton" value="Thêm">
+            <input type="submit" name="AdminProductEditDetailSubmit" class="AdminProductEditButton" value="Thêm"> -->
         </div>
     </form>
     <style>
@@ -75,27 +119,72 @@
         }
     </style>
     <script>
-        function EditProduct(){
+       function EditProduct(){
+            //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
             var Productname=document.AdminProductEdit.AdmintxtProductname
-            var password=document.AdminProductEdit.AdmintxtPrice
-            var repassword=document.AdminProductEdit.AdmintxtIamge
-            var email=document.AdminProductEdit.AdmintxtQuantity
+            var Price=document.AdminProductEdit.AdmintxtPrice
+            var Provide=document.AdminProductEdit.AdmintxtProvide
+            var UnitProduce=document.AdminProductEdit.AdmintxtUnitProduce
+            var Detail=document.AdminProductEdit.AdmintxtDetail
+            var Quantity=document.AdminProductEdit.AdmintxtQuantity
             var alert=document.AdminProductEdit.AdmintxtAlert
-            var checkuser= /^SV\d{5}\.$/
-            var checkemail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            var checkpass= /\d{6,15}$/
-            if(!checkuser.test(Productname.value)){
+            var checkProductname= /^SV\d{5}\.$/
+            var checkPrice= /\d{6,10}đ$/
+            //Thể loại không cần check vì nó sẽ là select nên sẽ lun có dữ liệu//
+            //Nhà cung cấp có khả năng không cần check//
+            var checkProvide= /^SV\d{5}\.$/
+            var checkUnitProduce= /^SV\d{5}\.$/
+            var checkQuantity= /\d{1,4}$/
+            var checkDetail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(!Productname.value){
+                alert.type="text"
+                alert.value="Hãy nhập tên sản phẩm"
+                Productname.focus()
+                return false
+            }
+            if(!Price.value){
+                alert.type="text"
+                alert.value="Hãy nhập giá bán"
+                Price.focus()
+                return false
+            }
+            if(!UnitProduce.value){
+                alert.type="text"
+                alert.value="Hãy nhập đơn vị sản xuất"
+                UnitProduce.focus()
+                return false
+            }
+            if(!Detail.value){
+                alert.type="text"
+                alert.value="Hãy mô tả sản phẩm"
+                Detail.focus()
+                return false
+            }
+            if(!Quantity.value){
+                alert.type="text"
+                alert.value="Hãy nhập số lượng"
+                Quantity.focus()
+                return false
+            }
+            if(!checkProductname.test(Productname.value)){
                 alert.type="text"
                 alert.value="Sai định dạng tên sản phẩm"
                 Productname.focus()
                 return false
             }
-            if(!checkemail.test(email.value)){
-                alert.value="Sai định dạng email"
-                email.focus()
+            if(!checkPrice.test(Price.value)){
+                alert.type="text"
+                alert.value="Sai định dạng giá bán"
+                Price.focus()
                 return false
             }
-            alert("Đăng ký thành công")
+            if(!checkQuantity.test(Quantity.value)){
+                alert.type="text"
+                alert.value="Sai định dạng số lượng"
+                Quantity.focus()
+                return false
+            }
+            alert("Thêm sản phẩm thành công")
         return true
         }
         function ChooseFile(file){
