@@ -7,7 +7,8 @@
             <?php 
             include '..\\config/Connect.php';
             $con=new Connect();
-            $result=$con->selectsql("product","*","where id='$_GET[idproduct]'");
+            $id=$_GET['idproduct'];
+            $result=$con->selectsql("product","*","where id='$id'");
             //Phần thể loại chưa thể hiện checkbox hoặc select 
             //Chưa có dữ liệu để thể hiện GUI
             if($result->num_rows==1){
@@ -16,8 +17,23 @@
             <input type='text' name='AdmintxtAlert' value='$row[ID]' readonly disabled></br>
             <label>Tên sản phẩm: </label></br>
             <input type='text' name='AdmintxtProductname' value='$row[Name]' class='AdmintxtProductname'></br>
-            <label>Thể loại: </label></br>
-            <input type='text' name='AdmintxtProductCategory' class='AdmintxtProductCategory'></br>
+            <label>Thể loại: </label></br>";
+        //     $detail=$con->selectsql("chitietsanpham,theloai","*","where masanpham='$id'");
+        //     $category=$con->selectsql("theloai");
+        //     $dt=$detail->fetch_assoc();
+        //     if($category->num_rows>0){ 
+        //         while($ct=$category->fetch_assoc()){
+        //             if($dt['matheloai']==$ct['matheloai']){
+        //                 echo "<input type='checkbox' name='AdmintxtProductCategory' value='$row[matheloai]' class='AdmintxtProductCategory' checked>$row[tentheloai]</br>";
+        //                 $dt=$detail->fetch_assoc();
+        //             }
+        //             else{
+        //                 echo "<input type='checkbox' name='AdmintxtProductCategory' value='$row[matheloai]' class='AdmintxtProductCategory'>$row[tentheloai]</br>";
+        //             }
+
+        //     }
+        // }
+            echo "<input type='text' name='AdmintxtProductCategory' class='AdmintxtProductCategory'></br>
             <label>Giá bán: </label></br>
             <input type='text' name='AdmintxtPrice' value='$row[price]' class='AdmintxtPrice'></br>
             <label>Nhà cung cấp: </label></br> 
@@ -49,7 +65,7 @@
             <input type='hidden' name='AdmintxtAlert' readonly disabled style='border: white;color: red;'></br>
             <input type='hidden' name='id' value='sp'></br>
             <input type='submit' name='AdminProductEditDetailSubmit' class='AdminProductEditButton' value='Chỉnh sửa'>";
-            }
+                }
             ?>
             <!-- <label>Tên sản phẩm: </label></br>
             <input type="text" name="AdmintxtProductname" placeholder="Nhập tên sản phẩm"  class="AdmintxtProductname"></br>

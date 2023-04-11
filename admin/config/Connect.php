@@ -3,9 +3,9 @@ class Connect{
     public $conn;
     function __construct(){
         $servername="localhost";
-        $username="QLBH"; 
+        $username="QLBDC"; 
         $password="123456";
-        $dbname="web2";
+        $dbname="toykingdom";
         $this->conn=new mysqli($servername,$username, $password,$dbname);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);

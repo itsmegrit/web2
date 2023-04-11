@@ -1,6 +1,6 @@
-<form class="admin-permission">
+<div class="admin-permission">
     <div class="admin-permission-title"><label>Quản lý quyền</label></br>
-    <input type="button" value="+ Thêm" class="admin-permission-button-add">
+    <a href="admin.php?id=q&action=add" class="admin-permission-button-add" style="text-decoration: none;">+ Thêm<a>
     </div>
     <div class="admin-div-table-permission">
     <table class="admin-table-permission" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
@@ -11,28 +11,41 @@
         </tr>
        <?php 
        include '..\\config/Connect.php';
+       include 'admin-permission-del.php';
        $conn=new Connect();
-        $result = $conn->selectsql("Permission");
+        $result = $conn->selectsql("quyen");
             
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
+                if($row["tinhtrang"]==1){
                 echo "<tr>
-                    <td>$row[ID_permission]</td>
-                    <td>$row[PermissionName]</td>
-                    <td>$row[Password]</td>
-                    <td>$row[Permission]</td>
-                    <td><input type='submit' value='Xóa' id='$row[ID_permission]'></td>
+                    <td>$row[maquyen]</td>
+                    <td>$row[tenquyen]</td>
+                    <td><form action='admin.php' method='GET' onsubmit='return DelPer()'>
+                    <input type='submit' value='Xóa' class='admin-permission-del' name='function'>
+                    <input type='hidden' name='id' value='q'>
+                    <input type='hidden' name='idpermission' value='$row[maquyen]'>
+                    <a href='admin.php?id=q&&action=edit&&idpermission=$row[maquyen]' class='admin-permission-Edit' style='text-decoration: none;'>Sửa<a>
+                    </form>
+                    </td>
                 </tr>";
               }
-            } else {
-              echo "0 results";
-
             }
+            } 
             $conn->closeConnect();
         ?>
     </table>
     </div>
+    <script>
+            function DelPer(){
+            Chosse=confirm("Bạn chắc chắn xóa quyền này ?")
+            if(Chosse){
+                return true
+            }
+            return false
+        }
+    </script>
     <style>
         .admin-permission-title{
             text-align: center;
@@ -54,6 +67,9 @@
             border-radius: 10px;
             border: solid 1px rgb(200, 200, 200);
         }
+        /* .admin-table-permission tr{
+            border: solid black;
+        } */
         .admin-permission-button-add{
             margin-left: 90%;
             padding: 5px;
@@ -65,5 +81,29 @@
         .admin-permission-button-add:hover{
             background-color: chartreuse;
         }
+        .admin-permission-button-add:hover{
+            background-color: chartreuse;
+        }
+        .admin-permission-del{
+            padding: 3px 10px;
+            background-color: red;
+            color: white;
+            border: solid 1px black;
+            border-radius: 5px;
+        }
+        .admin-permission-del:hover{
+            background-color: brown;
+        }
+        .admin-permission-Edit{
+            padding: 3px 10px;
+            font-size: 15px;
+            color: black;
+            background-color: aqua;
+            border-radius: 5px;
+            border: solid 1px black;
+        }
+        .admin-permission-Edit:hover{
+            background-color: blue;
+        }
     </style>
-</form>
+</div>

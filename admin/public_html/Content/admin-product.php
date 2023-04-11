@@ -13,28 +13,30 @@
             <th>Chức năng</th>
         </tr>
        <?php 
-            include '..\\config/Connect.php';
-            include 'admin-product-del.php';
-            // Create connection
-            $conn =new Connect();
-            // Check connection      
-            $result = $conn->selectsql("Product");
-            if ($result->num_rows > 0) {
-              // output data of each row
-              while($row = $result->fetch_assoc()) {
-                echo "<tr>
-                    <td>$row[ID]</td>
-                    <td>$row[Name]</td>
-                    <td>$row[Price]</td>
-                    <td>$row[ID_Category]</td>
-                    <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-product-del' name='function' value='Xóa'>
-                    <a href='admin.php?id=sp&&action=edit&&idproduct=$row[ID]' class='admin-product-Edit' style='text-decoration: none;'>Sửa<a> 
-                    <input type='hidden' name='id' value='sp'>
-                    </td>
-                </tr>";
-              }
-            }
-            $conn->closeConnect();
+            // include '..\\config/Connect.php';
+            // include 'admin-product-del.php';
+            // // Create connection
+            // $conn =new Connect();
+            // // Check connection      
+            // $result = $conn->selectsql("Product");
+            // if ($result->num_rows > 0) {
+            //   // output data of each row
+            //   while($row = $result->fetch_assoc()) {
+            //     // if($row["tinhtrang"]==1){
+            //     echo "<tr>
+            //         <td>$row[ID]</td>
+            //         <td>$row[Name]</td>
+            //         <td>$row[Price]</td>
+            //         <td>$row[ID_Category]</td>
+            //         <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-product-del' name='function' value='Xóa'>
+            //         <a href='admin.php?id=sp&&action=edit&&idproduct=$row[ID]' class='admin-product-Edit' style='text-decoration: none;'>Sửa<a> 
+            //         <input type='hidden' name='id' value='sp'>
+            //         </td>
+            //     </tr>";
+            //     // }
+            //   }
+            // }
+            // $conn->closeConnect();
         ?>
     </table>
     </div>

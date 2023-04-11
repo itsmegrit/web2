@@ -4,30 +4,33 @@
             <label style="font-size: 30px;">Thêm sản phẩm</label></br>
         </div>
         <div class="AdminProductAddDetail">
+            <label>Mã sản phẩm: </label></br>
+            <input type="text" name="AdmintxtProductID" placeholder="Nhập mã sản phẩm"  class="AdmintxtProductID"></br>
             <label>Tên sản phẩm: </label></br>
             <input type="text" name="AdmintxtProductname" placeholder="Nhập tên sản phẩm"  class="AdmintxtProductname"></br>
+            <label>Thể loại: </label>
+            <div class="Productcategory">
             <?php 
-            // include '..\\config/Connect.php';
-            // $con=new Connect();
-            // $result=$con->selectsql("Category");
-            //1 sản phẩm thuộc nhiều thể loại
-            // if($result->num_rows>0){
-            //     while($row=$result->fetch_assoc()){
-            //         echo "<input type='checkbox' name='AdmintxtProductCategory' value='$row[ID]' class='AdmintxtProductCategory'>$row[Name]</br>";
-            //     }
-            // }
+            include '..\\config/Connect.php';
+            $con=new Connect();
+            $result=$con->selectsql("theloai");
+            //1 sản phẩm thuộc nhiều thể loại            
+            if($result->num_rows > 0){
+                while($row=$result->fetch_assoc()){
+                    echo "<input type='checkbox' name='AdmintxtProductCategory' value='$row[matheloai]' class='AdmintxtProductCategory'>$row[tentheloai]";
+                }
+            }
             //1 sản phẩm thuộc 1 thể loại
             // echo "<select name='AdmintxtProductCategory'>";
             // if($result->num_rows>0){
             //     while($row=$result->fetch_assoc()){
-            //         echo "<option value='$row[ID]'>$row[Name]</option>";
+            //         echo "<option value='$row[matheloai]'>$row[tentheloai]</option>";
             //     }
             // }
             // echo "</select>";
             
         ?>
-            <label>Thể loại: </label></br>
-            <input type="text" name="AdmintxtProductCategory" placeholder="Nhập thể loại của sản phẩm" class="AdmintxtProductCategory"></br>
+        </div>
             <label>Giá bán: </label></br>
             <input type="text" name="AdmintxtPrice" placeholder="Nhập giá bán" class="AdmintxtPrice"></br>
             <label>Nhà cung cấp: </label></br> 
@@ -37,19 +40,19 @@
             <label>Mô tả chi tiết: </label></br> 
             <input type="text" name="AdmintxtDetail" placeholder="Nhập tên nhà cung cấp hoặc mã nhà cung cấp" name="AdmintxtDetail" class="AdmintxtDetail"></br>
             <div class="AdminAddProductIamge">
-            <label>Hình ảnh 1: </label></br>
+            <label>Hình ảnh 1: </label>
             <input type="file" name="AdmintxtIamge1" class="AdmintxtIamge1" data-multiple-caption="{count} files selected" 
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="1">
             <img id="image1"></br>
-            <label>Hình ảnh 2: </label></br>
+            <label>Hình ảnh 2: </label>
             <input type="file" name="AdmintxtIamge2" class="AdmintxtIamge2" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="2">
             <img id="image2"></br>
-            <label>Hình ảnh 3: </label></br>
+            <label>Hình ảnh 3: </label>
             <input type="file" name="AdmintxtIamge3" class="AdmintxtIamge3" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="3">
             <img id="image3"></br>
-            <label>Hình ảnh 4: </label></br>
+            <label>Hình ảnh 4: </label>
             <input type="file" name="AdmintxtIamge4" class="AdmintxtIamg4" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="4">
             <img id="image4">
@@ -90,10 +93,16 @@
             width: 100px;
             height: 100px;
         }
+        .Productcategory input{
+            width: 3%;
+            height: 15px;
+            margin: 10px;
+        }
     </style>
     <script>
         function AddProduct(){
             //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
+            var ProductID=document.AdminProductAdd.AdmintxtProductID
             var Productname=document.AdminProductAdd.AdmintxtProductname
             var Price=document.AdminProductAdd.AdmintxtPrice
             var Provide=document.AdminProductAdd.AdmintxtProvide
@@ -101,14 +110,22 @@
             var Detail=document.AdminProductAdd.AdmintxtDetail
             var Quantity=document.AdminProductAdd.AdmintxtQuantity
             var alert=document.AdminProductAdd.AdmintxtAlert
+            var checkID=/[a-z-A-Z]{3}\d{4}$/
+            //có thể ko cần kiểm tra đúng kiểu dữ liệu tên sản phẩm
             var checkProductname= /^SV\d{5}\.$/
-            var checkPrice= /\d{6,10}đ$/
+            var checkPrice= /\d{6,10}\đ$/
             //Thể loại không cần check vì nó sẽ là select nên sẽ lun có dữ liệu//
             //Nhà cung cấp có khả năng không cần check//
-            var checkProvide= /^SV\d{5}\.$/
-            var checkUnitProduce= /^SV\d{5}\.$/
+            // var checkProvide= /^SV\d{5}\.$/
+            // var checkUnitProduce= /^SV\d{5}\.$/
             var checkQuantity= /\d{1,4}$/
-            var checkDetail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            var checkDetail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+            if(!ProductID.value){
+                alert.type="text"
+                alert.value="Hãy nhập mã sản phẩm"
+                ProductID.focus()
+                return false
+            }
             if(!Productname.value){
                 alert.type="text"
                 alert.value="Hãy nhập tên sản phẩm"
@@ -137,6 +154,12 @@
                 alert.type="text"
                 alert.value="Hãy nhập số lượng"
                 Quantity.focus()
+                return false
+            }
+            if(!checkProductID.test(ProductID.value)){
+                alert.type="text"
+                alert.value="Sai định dạng mã sản phẩm"
+                ProductID.focus()
                 return false
             }
             if(!checkProductname.test(Productname.value)){
@@ -187,7 +210,6 @@
     }
 </script>
 <?php 
-    include '..\\config/Connect.php';
     if(isset($_GET["AdmintxtProductName"])){
     $productname=$_GET["AdmintxtProductName"];
     $price=$_GET["AdmintxtPrice"];
@@ -196,12 +218,12 @@
     $unitproduce=$_GET["AdmintxtUnitProduce"];
     $detail=$_GET["AdmintxtDetail"];
     $quantity=$_GET["AdmintxtQuantity"];
-    $conn =new Connect();
     if($conn->insertsql("Product","('$productname','$price','$category','$provide','$unitproduce','$detail','$quantity')")){
         //Thành công
     }
     else{
         //Thất bại
     }
+    $con->closeConnect();
 }
 ?>
