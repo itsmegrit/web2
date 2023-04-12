@@ -8,44 +8,34 @@
             <th>Mã tài khoản</th>
             <th>Username</th>
             <th>Quyền</th>
-            <th>Email</th>
+            <th>Ngày tạo</th>
             <th>Chức năng</th>
         </tr>
        <?php 
-            $servername = "localhost";
-            $username = "QLBH";
-            $password = "123456";
-            $dbname = "web2";
-            
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-            }
-            
-            $sql = "SELECT * FROM Account";
-            $result = $conn->query($sql);
-            
+        include '..\\config/Connect.php';
+        include 'admin-account-del.php';
+        $conn=new Connect();
+        $result = $conn->selectsql("taikhoan as tk,quyen as q","*","where tk.maquyen=q.maquyen");
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
+                if($row["trangthai"]==1){
                 echo "<tr>
-                    <td>$row[ID_Account]</td>
-                    <td>$row[Username]</td>
-                    <td>$row[Password]</td>
-                    <td>$row[ID_Permission]</td>
+                    <td>$row[mataikhoan]</td>
+                    <td>$row[tentaikhoan]</td>
+                    <td>$row[tenquyen]</td>
+                    <td>$row[ngaytao]</td>
                     <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-account-del' name='function' value='Xóa'>
-                    <a href='admin.php?id=sp&&action=edit' class='admin-account-Edit' style='text-decoration: none;'>Sửa<a> 
-                    <input type='hidden' name='id' value='sp'>
+                    <input type='hidden' name='id' value='tk'>
+                    <input type='hidden' name='idaccount' value='$row[mataikhoan]'>
+                    <a href='admin.php?id=tk&action=edit&idaccount=$row[mataikhoan]' class='admin-account-Edit' style='text-decoration: none;'>Sửa<a> 
+                    </form>
                     </td>
                 </tr>";
+                }
               }
-            } else {
-              echo "0 results";
-
-            }
-            $conn->close();
+            } 
+        $conn->closeConnect();
         ?>
     </table>
     </div>

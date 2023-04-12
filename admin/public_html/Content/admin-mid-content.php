@@ -1,7 +1,14 @@
 <?php 
     if(isset($_GET["id"])&&isset($_GET["action"])){
         switch($_GET["id"]){
-            case "tk":include 'admin-account.php';break;
+            case "tk":
+                if($_GET["action"]=="add"){
+                    include 'admin-account-add.php';
+                }
+                if($_GET["action"]=="edit"){
+                    include 'admin-account-edit.php';
+                }
+                break;
             case "q": 
                 if($_GET["action"]=="add"){
                     include 'admin-permission-add.php';

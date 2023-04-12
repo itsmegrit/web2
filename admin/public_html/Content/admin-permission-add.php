@@ -58,64 +58,12 @@
     <script>
         function Addpermission(){
             //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
-            var permissionID=document.AdminpermissionAdd.AdmintxtpermissionID
             var permissionname=document.AdminpermissionAdd.Admintxtpermissionname
-            var Price=document.AdminpermissionAdd.AdmintxtPrice
-            var Provide=document.AdminpermissionAdd.AdmintxtProvide
-            var UnitProduce=document.AdminpermissionAdd.AdmintxtUnitProduce
-            var Detail=document.AdminpermissionAdd.AdmintxtDetail
-            var Quantity=document.AdminpermissionAdd.AdmintxtQuantity
-            var alert=document.AdminpermissionAdd.AdmintxtAlert
-            var checkID=/[a-z-A-Z]{3}\d{4}$/
             //có thể ko cần kiểm tra đúng kiểu dữ liệu tên sản phẩm
-            var checkpermissionname= /^SV\d{5}\.$/
-            var checkPrice= /\d{6,10}\đ$/
-            //Thể loại không cần check vì nó sẽ là select nên sẽ lun có dữ liệu//
-            //Nhà cung cấp có khả năng không cần check//
-            // var checkProvide= /^SV\d{5}\.$/
-            // var checkUnitProduce= /^SV\d{5}\.$/
-            var checkQuantity= /\d{1,4}$/
-            var checkDetail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
-            if(!permissionID.value){
-                alert.type="text"
-                alert.value="Hãy nhập mã sản phẩm"
-                permissionID.focus()
-                return false
-            }
             if(!permissionname.value){
                 alert.type="text"
                 alert.value="Hãy nhập tên sản phẩm"
                 permissionname.focus()
-                return false
-            }
-            if(!Price.value){
-                alert.type="text"
-                alert.value="Hãy nhập giá bán"
-                Price.focus()
-                return false
-            }
-            if(!UnitProduce.value){
-                alert.type="text"
-                alert.value="Hãy nhập đơn vị sản xuất"
-                UnitProduce.focus()
-                return false
-            }
-            if(!Detail.value){
-                alert.type="text"
-                alert.value="Hãy mô tả sản phẩm"
-                Detail.focus()
-                return false
-            }
-            if(!Quantity.value){
-                alert.type="text"
-                alert.value="Hãy nhập số lượng"
-                Quantity.focus()
-                return false
-            }
-            if(!checkpermissionID.test(permissionID.value)){
-                alert.type="text"
-                alert.value="Sai định dạng mã sản phẩm"
-                permissionID.focus()
                 return false
             }
             if(!checkpermissionname.test(permissionname.value)){
@@ -124,46 +72,9 @@
                 permissionname.focus()
                 return false
             }
-            if(!checkPrice.test(Price.value)){
-                alert.type="text"
-                alert.value="Sai định dạng giá bán"
-                Price.focus()
-                return false
-            }
-            if(!checkQuantity.test(Quantity.value)){
-                alert.type="text"
-                alert.value="Sai định dạng số lượng"
-                Quantity.focus()
-                return false
-            }
-            alert("Thêm sản phẩm thành công")
+            alert("Thêm quyền thành công")
         return true
         }
-        function ChooseFile(file){
-            if(file.files[0]){
-                var reader=new FileReader();
-                switch(file.id){
-                    case "1":
-                    reader.onload= function(e){
-                    $('#image1').attr('src',e.target.result);}
-                    break
-                    case "2":
-                    reader.onload= function(e){
-                    $('#image2').attr('src',e.target.result);}
-                    break
-                    case "3":
-                    reader.onload= function(e){
-                    $('#image3').attr('src',e.target.result);}
-                    break
-                    case "4":
-                    reader.onload= function(e){
-                    $('#image4').attr('src',e.target.result);}
-                    break
-                    default: break
-                }
-                reader.readAsDataURL(file.files[0])
-            }
-    }
 </script>
 <?php 
     if(isset($_GET["AdmintxtpermissionName"])){

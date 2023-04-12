@@ -31,6 +31,7 @@
             //         <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-product-del' name='function' value='Xóa'>
             //         <a href='admin.php?id=sp&&action=edit&&idproduct=$row[ID]' class='admin-product-Edit' style='text-decoration: none;'>Sửa<a> 
             //         <input type='hidden' name='id' value='sp'>
+            //         <input type='hidden' name='idproduct' value='$row[masanpham]'>  
             //         </td>
             //     </tr>";
             //     // }
