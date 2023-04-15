@@ -25,7 +25,7 @@
                     <td>$row[tentaikhoan]</td>
                     <td>$row[tenquyen]</td>
                     <td>$row[ngaytao]</td>
-                    <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-account-del' name='function' value='Xóa'>
+                    <td><form action='admin.php' method='GET' onsubmit='return DelAc()'><input type='submit' class='admin-account-del' name='function' value='Xóa'>
                     <input type='hidden' name='id' value='tk'>
                     <input type='hidden' name='idaccount' value='$row[mataikhoan]'>
                     <a href='admin.php?id=tk&action=edit&idaccount=$row[mataikhoan]' class='admin-account-Edit' style='text-decoration: none;'>Sửa<a> 
@@ -39,6 +39,15 @@
         ?>
     </table>
     </div>
+    <script>
+            function DelAc(){
+            Chosse=confirm("Bạn chắc chắn xóa tài khoản này ?")
+            if(Chosse){
+                return true
+            }
+            return false
+        }
+    </script>
     <style>
         .admin-account-title{
             text-align: center;

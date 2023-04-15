@@ -1,13 +1,23 @@
 <?php 
     if(isset($_GET["function"])=="Xóa"&&isset($_GET["idpermission"])){
         if($_GET["idpermission"]=="001"){
-            echo "<script>alert('Không thể xóa quyền admin')</script>";
+            header("Location:admin.php?id=q");
+            echo "<script type='text/javascript'>
+            window.onload=function(){
+                alert('Không thể xóa quyền admin')
+            }
+            </script>";
         }
         else{
             $conn = new Connect();
-            $result = $conn->editsql("quyen","maquyen='$_GET[idpermission]'","tinhtrang='0'");
-            echo "<script>alert('Xóa thành công')</script>";        
+            $result = $conn->editsql("quyen","maquyen='$_GET[idpermission]'","tinhtrang='0'");   
             $conn->closeConnect();
+            header("Location:admin.php?id=q");
+            echo "<script type='text/javascript'>
+            window.onload=function(){
+                alert('xóa thành công')
+            }
+            </script>";   
         }
     }
 ?>

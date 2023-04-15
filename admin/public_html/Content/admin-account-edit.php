@@ -21,8 +21,9 @@
             <input type='text' name='AdmintxtUsername' readonly disabled value='$row[tentaikhoan]'></br>
             <label>Mật khẩu: </label></br>
             <input type='password' name='AdmintxtPassword' readonly disabled value='$row[matkhau]'></br>
-            <label>Quyền tài khoản: </label></br>
-            <select name='AdmintxtPermissionAccount'>";
+            <label>Quyền tài khoản: </label></br>";
+            if($_GET["idaccount"]=="001"){
+            echo "<select name='AdmintxtPermissionAccount' readonly disabled>";
             if($per->num_rows > 0){
                 while($perrow=$per->fetch_assoc()){
                     if($row["maquyen"]==$perrow["maquyen"]){
@@ -31,6 +32,20 @@
                     else{
                         echo "<option value='$perrow[maquyen]'>$perrow[tenquyen]</option>";
                     }
+                }
+                }
+            }
+            else{
+            echo "<select name='AdmintxtPermissionAccount'>";
+            if($per->num_rows > 0){
+                while($perrow=$per->fetch_assoc()){
+                    if($row["maquyen"]==$perrow["maquyen"]){
+                        echo "<option value='$perrow[maquyen]' selected>$perrow[tenquyen]</option>";
+                    }
+                    else{
+                        echo "<option value='$perrow[maquyen]'>$perrow[tenquyen]</option>";
+                    }
+                }
                 }
             }
             echo "</select></br>";

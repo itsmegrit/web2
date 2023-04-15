@@ -5,7 +5,7 @@
         </div>
         <div class="AdminpermissionAddDetail">
             <label>Mã quyền: </label></br>
-            <input type="text" name="AdmintxtpermissionID" placeholder="Nhập mã sản phẩm"  class="AdmintxtpermissionID"></br>
+            <input type="text" name="AdmintxtpermissionID" placeholder="Nhập mã sản phẩm với 3 số vd như 001,002,011,.."  class="AdmintxtpermissionID"></br>
             <label>Tên quyền: </label></br>
             <input type="text" name="Admintxtpermissionname" placeholder="Nhập tên sản phẩm"  class="Admintxtpermissionname"></br>
             <div class="Permissionfunction">
@@ -16,7 +16,7 @@
             //1 sản phẩm thuộc nhiều thể loại
             if($result->num_rows > 0){
                 while($row=$result->fetch_assoc()){
-                    echo "<input type='checkbox' name='AdmintxtpermissionCategory' value='$row[machucnang]' class='Admintxtpermissionfunction'>$row[tenchucnang]";
+                    echo "<input type='checkbox' name='Admintxtpermissionfunc[]' value='$row[machucnang]' class='Admintxtpermissionfunction'>$row[tenchucnang]";
                 }
             }
         ?>
@@ -58,17 +58,20 @@
     <script>
         function Addpermission(){
             //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
+            var permissionid=document.AdminpermissionAdd.AdmintxtpermissionID
             var permissionname=document.AdminpermissionAdd.Admintxtpermissionname
+            var alert=document.AdminpermissionAdd.AdmintxtAlert
+            var checkid=/"d{3}$"/
             //có thể ko cần kiểm tra đúng kiểu dữ liệu tên sản phẩm
-            if(!permissionname.value){
+            if(!permissionid.value){
                 alert.type="text"
-                alert.value="Hãy nhập tên sản phẩm"
+                alert.value="Hãy nhập mã quyền"
                 permissionname.focus()
                 return false
             }
-            if(!checkpermissionname.test(permissionname.value)){
+            if(!permissionname.value){
                 alert.type="text"
-                alert.value="Sai định dạng tên sản phẩm"
+                alert.value="Hãy nhập tên quyền"
                 permissionname.focus()
                 return false
             }
@@ -77,19 +80,20 @@
         }
 </script>
 <?php 
-    if(isset($_GET["AdmintxtpermissionName"])){
-    $permissionname=$_GET["AdmintxtpermissionName"];
-    $price=$_GET["AdmintxtPrice"];
-    $category=$_GET["AdmintxtpermissionCategory"];
-    $provide=$_GET["AdmintxtProvide"];
-    $unitproduce=$_GET["AdmintxtUnitProduce"];
-    $detail=$_GET["AdmintxtDetail"];
-    if($con->insertsql("permission","('$permissionname','$price','$category')")){
-        //Thành công
-    }
-    else{
-        //Thất bại
-    }
-    $con->closeConnect();
-}
+//     if(isset($_GET["Admintxtpermissionname"]) && isset($_GET["AdmintxtpermissionID"])){
+//     $permissionid=$_GET["AdmintxtpermissionID"];
+//     $permissionname=$_GET["Admintxtpermissionname"];
+//     $perfunc=$_GET["Admintxtpermissionfunc"];
+//     if($con->insertsql("quyen","VALUES ('$permissionid','$permissionname',1)")){
+//         //Thành công
+//     }
+//     else{
+
+//     }
+//     // foreach($perfunc as $func){
+//     $con->insertsql("quyenvachucnang","VALUES ('$permissionid','$perfunc')");
+//     // }
+//     header("Location:admin.php?id=q");
+//     $con->closeConnect();
+// }
 ?>

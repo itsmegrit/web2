@@ -20,7 +20,7 @@ class Connect{
         return $result;
     }
     function delsql($table,$id){
-        $sql="DELETE from $table where id='$id'";
+        $sql="DELETE from $table where $id";
         $result= $this->conn->query($sql);
         return $result;
     }

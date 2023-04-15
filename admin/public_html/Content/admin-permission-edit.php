@@ -95,18 +95,18 @@
 </script>
 <?php 
     if(isset($_GET["AdmintxtpermissionName"])){
-    $permissionname=$_GET["AdmintxtpermissionName"];
-    $price=$_GET["AdmintxtPrice"];
-    $category=$_GET["AdmintxtpermissionCategory"];
-    $provide=$_GET["AdmintxtProvide"];
-    $unitproduce=$_GET["AdmintxtUnitProduce"];
-    $detail=$_GET["AdmintxtDetail"];
-    if($con->insertsql("permission","('$permissionname','$price','$category')")){
-        //Thành công
+        $permissionid=$_GET["AdmintxtpermissionID"];
+        $permissionname=$_GET["Admintxtpermissionname"];
+        $perfunc=$_GET["Admintxtpermissionfunc"];
+        if($con->editsql("quyen","maquyen='$permissionid'","tenquyen='$permissionname'")){
+            //Thành công
+        }
+        else{
+            //Thất bại
+        }
+        foreach($perfunc as $func){
+        $con->editsql("quyenvachucnang","maquyen='$permissionid'","machucnnang='$func'");
+        }
+        $con->closeConnect();
     }
-    else{
-        //Thất bại
-    }
-    $con->closeConnect();
-}
 ?>

@@ -12,9 +12,9 @@
        <?php 
        include '..\\config/Connect.php';
        include 'admin-permission-del.php';
+       include 'admin-permission-handle.php';
        $conn=new Connect();
         $result = $conn->selectsql("quyen");
-            
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {

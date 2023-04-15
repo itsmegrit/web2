@@ -17,18 +17,9 @@
             //1 sản phẩm thuộc nhiều thể loại            
             if($result->num_rows > 0){
                 while($row=$result->fetch_assoc()){
-                    echo "<input type='checkbox' name='AdmintxtProductCategory' value='$row[matheloai]' class='AdmintxtProductCategory'>$row[tentheloai]";
+                    echo "<input type='checkbox' name='AdmintxtProductCategory[]' value='$row[matheloai]' class='AdmintxtProductCategory'>$row[tentheloai]";
                 }
             }
-            //1 sản phẩm thuộc 1 thể loại
-            // echo "<select name='AdmintxtProductCategory'>";
-            // if($result->num_rows>0){
-            //     while($row=$result->fetch_assoc()){
-            //         echo "<option value='$row[matheloai]'>$row[tentheloai]</option>";
-            //     }
-            // }
-            // echo "</select>";
-            
         ?>
         </div>
             <label>Giá bán: </label></br>
