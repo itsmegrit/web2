@@ -1,9 +1,6 @@
-.header {
+.header-container {
   padding: 10px;
   background-color: azure;
-}
-.header .box {
-  background-color: red;
 }
 
 /*# sourceMappingURL=headerStyle.css.map */

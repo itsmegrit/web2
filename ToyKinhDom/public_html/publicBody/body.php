@@ -1,3 +1,3 @@
-<div class="commonLayout body">
+<div class="commonLayout">
   Body
 </div>
