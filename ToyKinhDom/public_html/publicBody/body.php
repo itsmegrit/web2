@@ -106,7 +106,7 @@
           <div class="product-image">
             <a href="#" class="image">
               <img class="img-1" src="./public_html/img/demo.jpg">
-              <img class="img-2" src="./public_html/img/demo2   .jpg">
+              <img class="img-2" src="./public_html/img/demo2.jpg">
             </a>
 
             <ul class="product-links">

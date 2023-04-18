@@ -8,8 +8,26 @@
   margin-right: 8px;
 }
 
+.header-mr-16px {
+  margin-right: 16px;
+}
+
+.header-ml-76px {
+  margin-left: 76px;
+}
+
 .header-h-32px {
   height: 32px;
+}
+
+.header-btn:hover {
+  cursor: pointer;
+  background-color: blueviolet;
+}
+
+.header-btn {
+  border-bottom: 1px solid #000;
+  border-radius: 8px;
 }
 
 /*# sourceMappingURL=headerStyle.css.map */
