@@ -11,7 +11,20 @@
         </button>
       </div>
       <div class="col-sm-5">
-        info
+        <div class="row d-flex align-items-center h-100">
+          <div class="col-sm-4 d-flex justify-content-end align-items-center">
+            <i class="fa-solid fa-receipt"></i>
+            Tra cứu đơn hàng
+          </div>
+          <div class="col-sm-4 d-flex justify-content-end align-items-center">
+            <i class="fas fa-shopping-cart"></i>
+            Giỏ hàng
+          </div>
+          <div class="col-sm-4 d-flex justify-content-end align-items-center">
+            <i class="fa-regular fa-user"></i>
+            Tài khoản
+          </div>
+        </div>
       </div>
     </div>
   </div>
