@@ -22,8 +22,8 @@
                 <div class="product-grid">
                     <div class="product-image">
                         <a href="#" class="image">
-                            <img class="img-1" src="img/demo1.jpg">
-                            <img class="img-2" src="img/demo1.jpg">
+                            <img class="img-1" src="./public_html/img/demo.jpg">
+                            <img class="img-2" src="./public_html/img/demo2.jpg">
                         </a>
                         <ul class="product-links">
                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -49,8 +49,8 @@
                 <div class="product-grid">
                     <div class="product-image">
                         <a href="#" class="image">
-                            <img class="img-1" src="img/demo1.jpg">
-                            <img class="img-2" src="img/demo1.jpg">
+                            <img class="img-1" src="./public_html/img/demo.jpg">
+                            <img class="img-2" src="./public_html/img/demo2.jpg">
                         </a>
 
                         <ul class="product-links">
@@ -77,8 +77,8 @@
                 <div class="product-grid">
                     <div class="product-image">
                         <a href="#" class="image">
-                            <img class="img-1" src="img/demo1.jpg">
-                            <img class="img-2" src="img/demo1.jpg">
+                            <img class="img-1" src="./public_html/img/demo.jpg">
+                            <img class="img-2" src="./public_html/img/demo2.jpg">
                         </a>
 
                         <ul class="product-links">
@@ -105,8 +105,8 @@
                 <div class="product-grid">
                     <div class="product-image">
                         <a href="#" class="image">
-                            <img class="img-1" src="img/demo1.jpg">
-                            <img class="img-2" src="img/demo1   .jpg">
+                            <img class="img-1" src="./public_html/img/demo.jpg">
+                            <img class="img-2" src="./public_html/img/demo2.jpg">
                         </a>
 
                         <ul class="product-links">
@@ -146,8 +146,8 @@
             <div class="product-grid">
                 <div class="product-image">
                     <a href="#" class="image">
-                        <img class="img-1" src="img/demo1.jpg">
-                        <img class="img-2" src="img/demo1.jpg">
+                        <img class="img-1" src="./public_html/img/demo.jpg">
+                        <img class="img-2" src="./public_html/img/demo2.jpg">
                     </a>
                     <ul class="product-links">
                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -173,8 +173,8 @@
             <div class="product-grid">
                 <div class="product-image">
                     <a href="#" class="image">
-                        <img class="img-1" src="img/demo1.jpg">
-                        <img class="img-2" src="img/demo1.jpg">
+                        <img class="img-1" src="./public_html/img/demo.jpg">
+                        <img class="img-2" src="./public_html/img/demo2.jpg">
                     </a>
 
                     <ul class="product-links">
@@ -201,8 +201,8 @@
             <div class="product-grid">
                 <div class="product-image">
                     <a href="#" class="image">
-                        <img class="img-1" src="img/demo1.jpg">
-                        <img class="img-2" src="img/demo1.jpg">
+                        <img class="img-1" src="./public_html/img/demo.jpg">
+                        <img class="img-2" src="./public_html/img/demo2.jpg">
                     </a>
 
                     <ul class="product-links">
@@ -229,8 +229,8 @@
             <div class="product-grid">
                 <div class="product-image">
                     <a href="#" class="image">
-                        <img class="img-1" src="img/demo1jpg">
-                        <img class="img-2" src="img/demo1.jpg">
+                        <img class="img-1" src="./public_html/img/demo.jpg">
+                        <img class="img-2" src="./public_html/img/demo2.jpg">
                     </a>
 
                     <ul class="product-links">
