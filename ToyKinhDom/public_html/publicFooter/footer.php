@@ -1,3 +1,4 @@
+<div class="commonLayout">
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-6 footerform">
@@ -49,8 +50,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-15">
+    <div class="col-sm-8">
       <p class="footer-reserved">© All rights reserved.</p>
     </div>
   </div>
+</div>
 </div>
