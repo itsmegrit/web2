@@ -2,11 +2,6 @@
     if(isset($_GET["function"])=="Xóa"&&isset($_GET["idpermission"])){
         if($_GET["idpermission"]=="001"){
             header("Location:admin.php?id=q");
-            echo "<script type='text/javascript'>
-            window.onload=function(){
-                alert('Không thể xóa quyền admin')
-            }
-            </script>";
         }
         else{
             $conn = new Connect();

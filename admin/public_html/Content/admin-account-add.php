@@ -25,8 +25,6 @@
             }
             echo "</select></br>";
         ?>
-            <label>Email: </label></br>
-            <input type="text" name="AdmintxtEmail"></br>
             <input type="hidden" name="AdmintxtAlert" readonly disabled style="border: white;color: red;"></br>
             <input type="submit" name="AdminAccountAddDetailSubmit" value="Thêm">
             <input type="hidden" name="id" value="tk"></br>
@@ -69,18 +67,35 @@
             var repassword=document.AdminAccountAdd.AdmintxtRepassword
             var email=document.AdminAccountAdd.AdmintxtEmail
             var alert=document.AdminAccountAdd.AdmintxtAlert
-            var checkuser= /^SV\d{5}\.$/
-            var checkemail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             var checkpass= /\d{6,15}$/
-            if(!checkuser.test(username.value)){
+            if(!username.value){
                 alert.type="text"
-                alert.value="Sai định dạng username"
+                alert.value="Hãy nhập tên tài khoản"
                 username.focus()
                 return false
             }
-            if(!checkemail.test(email.value)){
-                alert.value="Sai định dạng email"
-                email.focus()
+            if(!password.value){
+                alert.type="text"
+                alert.value="Hãy nhập mật khẩu"
+                password.focus()
+                return false
+            }
+            if(!repassword.value){
+                alert.type="text"
+                alert.value="Hãy nhập lại mật khẩu"
+                repassword.focus()
+                return false
+            }
+            if(password.value!=repassword.value){
+                alert.type="text"
+                alert.value="Nhập lại mật khẩu không giống mật khẩu đã nhập"
+                repassword.focus()
+                return false
+            }
+            if(!checkpass.test(password.value)){
+                alert.type="text"
+                alert.value="Sai định dạng mật khẩu"
+                password.focus()
                 return false
             }
             alert("Đăng ký thành công")

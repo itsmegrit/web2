@@ -14,7 +14,7 @@
         </tr>
        <?php 
             // include '..\\config/Connect.php';
-            // include 'admin-product-del.php';
+            // include 'admin-product-handle.php';
             // // Create connection
             // $conn =new Connect();
             // // Check connection      

@@ -16,27 +16,19 @@
             $row = $result->fetch_assoc();
             echo "
             <label>Mã tài khoản: </label></br>
-            <input type='text' name='AdmintxtUsername' readonly disabled value='$row[mataikhoan]'></br>
+            <input type='text' name='AdmintxtID' readonly disabled value='$row[mataikhoan]'></br>
+            <input type='hidden' name='AdmintxtID' value='$row[mataikhoan]'>
             <label>Username: </label></br>
             <input type='text' name='AdmintxtUsername' readonly disabled value='$row[tentaikhoan]'></br>
             <label>Mật khẩu: </label></br>
-            <input type='password' name='AdmintxtPassword' readonly disabled value='$row[matkhau]'></br>
+            <input type='password' name='AdmintxtPassword' value='$row[matkhau]' placeholder='Nhập 6-15 ký tự,số'></br>
             <label>Quyền tài khoản: </label></br>";
             if($_GET["idaccount"]=="001"){
-            echo "<select name='AdmintxtPermissionAccount' readonly disabled>";
-            if($per->num_rows > 0){
-                while($perrow=$per->fetch_assoc()){
-                    if($row["maquyen"]==$perrow["maquyen"]){
-                        echo "<option value='$perrow[maquyen]' selected>$perrow[tenquyen]</option>";
-                    }
-                    else{
-                        echo "<option value='$perrow[maquyen]'>$perrow[tenquyen]</option>";
-                    }
-                }
-                }
-            }
+                echo "<input type='hidden' name='AdmintxtPermissionAccount' value='$row[maquyen]'>
+                <select name='AdmintxtPermissionAccount' readonly disabled>";}
             else{
-            echo "<select name='AdmintxtPermissionAccount'>";
+                echo "<select name='AdmintxtPermissionAccount'>";  
+            }
             if($per->num_rows > 0){
                 while($perrow=$per->fetch_assoc()){
                     if($row["maquyen"]==$perrow["maquyen"]){
@@ -46,11 +38,8 @@
                         echo "<option value='$perrow[maquyen]'>$perrow[tenquyen]</option>";
                     }
                 }
-                }
             }
-            echo "</select></br>";
-            echo "<label>Email: </label></br>
-            <input type='text' name='AdmintxtEmail'></br>
+            echo "</select></br>
             <input type='hidden' name='AdmintxtAlert' readonly disabled style='border: white;color: red;'></br>
             <input type='submit' name='AdminAccountEditDetailSubmit' value='Chỉnh sửa'>
             <input type='hidden' name='id' value='tk'></br>";
@@ -92,26 +81,15 @@
     </style>
     <script>
         function EditAccount(){
-            var username=document.AdminAccountEdit.AdmintxtUsername
             var password=document.AdminAccountEdit.AdmintxtPassword
-            var repassword=document.AdminAccountEdit.AdmintxtRepassword
-            var email=document.AdminAccountEdit.AdmintxtEmail
             var alert=document.AdminAccountEdit.AdmintxtAlert
-            var checkuser= /^SV\d{5}\.$/
-            var checkemail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            var checkpass= /\d{6,15}$/
-            if(!checkuser.test(username.value)){
+            if(!password.value){
                 alert.type="text"
-                alert.value="Sai định dạng username"
+                alert.value="Hãy nhập mật khẩu từ 6-15 ký tự,số"
                 username.focus()
                 return false
             }
-            if(!checkemail.test(email.value)){
-                alert.value="Sai định dạng email"
-                email.focus()
-                return false
-            }
-            alert("Đăng ký thành công")
+            alert("Chỉnh sửa thành công")
         return true
         }
     </script>

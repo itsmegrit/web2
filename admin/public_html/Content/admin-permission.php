@@ -23,13 +23,22 @@
                     <td>$row[maquyen]</td>
                     <td>$row[tenquyen]</td>
                     <td><form action='admin.php' method='GET' onsubmit='return DelPer()'>
-                    <input type='submit' value='Xóa' class='admin-permission-del' name='function'>
                     <input type='hidden' name='id' value='q'>
-                    <input type='hidden' name='idpermission' value='$row[maquyen]'>
+                    <input type='hidden' name='idpermission' value='$row[maquyen]'>";
+                if($row["maquyen"]=="001"){
+                    echo "<input type='submit' value='Xóa' class='admin-permission-del' name='function' disabled>
                     <a href='admin.php?id=q&&action=edit&&idpermission=$row[maquyen]' class='admin-permission-Edit' style='text-decoration: none;'>Sửa<a>
                     </form>
                     </td>
                 </tr>";
+                }
+                else{
+                echo "<input type='submit' value='Xóa' class='admin-permission-del' name='function'>
+                    <a href='admin.php?id=q&&action=edit&&idpermission=$row[maquyen]' class='admin-permission-Edit' style='text-decoration: none;'>Sửa<a>
+                    </form>
+                    </td>
+                </tr>";
+                }
               }
             }
             } 

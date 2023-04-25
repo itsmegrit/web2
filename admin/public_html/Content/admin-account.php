@@ -1,6 +1,9 @@
-<form class="admin-account">
+<div class="admin-account">
     <div class="admin-account-title"><label>Quản lý tài khoản</label></br>
-    <a href="admin.php?id=tk&action=add" class="admin-account-button-add" style="text-decoration: none;">+ Thêm<a>
+    <ul>
+    <a href="admin.php?id=tk&action=restore" class="admin-account-button-restore" style="text-decoration: none;"><li>Khôi phục</li></a>
+    <a href="admin.php?id=tk&action=add" class="admin-account-button-add" style="text-decoration: none;"><li>+ Thêm</li></a>
+    </ul>
     </div>
     <div class="admin-div-table-account">
     <table class="admin-table-account" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
@@ -13,7 +16,7 @@
         </tr>
        <?php 
         include '..\\config/Connect.php';
-        include 'admin-account-del.php';
+        include 'admin-account-handle.php';
         $conn=new Connect();
         $result = $conn->selectsql("taikhoan as tk,quyen as q","*","where tk.maquyen=q.maquyen");
             if ($result->num_rows > 0) {
@@ -25,14 +28,24 @@
                     <td>$row[tentaikhoan]</td>
                     <td>$row[tenquyen]</td>
                     <td>$row[ngaytao]</td>
-                    <td><form action='admin.php' method='GET' onsubmit='return DelAc()'><input type='submit' class='admin-account-del' name='function' value='Xóa'>
+                    <td><form action='admin.php' method='GET' onsubmit='return DelAc()'>
                     <input type='hidden' name='id' value='tk'>
-                    <input type='hidden' name='idaccount' value='$row[mataikhoan]'>
+                    <input type='hidden' name='idaccount' value='$row[mataikhoan]'>";
+                if($row["maquyen"]=="001"){
+                    echo "<input type='submit' class='admin-account-del' name='function' value='Xóa' disabled>
                     <a href='admin.php?id=tk&action=edit&idaccount=$row[mataikhoan]' class='admin-account-Edit' style='text-decoration: none;'>Sửa<a> 
                     </form>
                     </td>
                 </tr>";
                 }
+                else{
+                echo "<input type='submit' class='admin-account-del' name='function' value='Xóa'>
+                    <a href='admin.php?id=tk&action=edit&idaccount=$row[mataikhoan]' class='admin-account-Edit' style='text-decoration: none;'>Sửa<a> 
+                    </form>
+                    </td>
+                </tr>";
+                }
+            }
               }
             } 
         $conn->closeConnect();
@@ -56,6 +69,20 @@
         .admin-account-title label{
             font-size: 30px;
         }
+        .admin-account-title li{
+            display: inline;
+        }
+        .admin-account-title ul a{
+            font-weight: 1000;
+            margin: 10px;
+            padding: 7px;
+            color: white;
+            background-color: blue;
+            border-radius: 10px;
+        }
+        .admin-account-title ul a:hover{
+            background-color: chartreuse;
+        }
         .admin-div-table-account{
             background-color:rgb(247,247,247); 
             margin-top:10px;
@@ -69,18 +96,6 @@
         .admin-table-account th,td{
             border-radius: 10px;
             border: solid 1px rgb(200, 200, 200);
-        }
-        .admin-account-button-add{
-            margin-left: 90%;
-            padding: 5px;
-            font-size: 15px;
-            color: white;
-            background-color: blue;
-            border: solid 1px black;
-            border-radius: 10px;
-        }
-        .admin-account-button-add:hover{
-            background-color: chartreuse;
         }
         .admin-account-Edit{
             padding: 3px 10px;
@@ -109,4 +124,4 @@
             }
 }
     </style>
-</form>
+</div>
