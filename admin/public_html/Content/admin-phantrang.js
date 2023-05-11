@@ -1,5 +1,8 @@
 $(".adminproduct-button-phantrang").click(function(){
-    document.getQuerySelectAll(".adminproduct-button-phantrang").style="background-color: gray;"
+    var list=document.querySelectorAll(".adminproduct-button-phantrang")
+    for(let i=0; i<list.length;i++){
+        list[i].style="background-color: white;"
+    }
     this.style="background-color: gray;"
     $.ajax({
         url: 'Content/admin-xulyphantrang.php',
@@ -19,7 +22,6 @@ $(".adminproduct-button-phantrang").click(function(){
                     <th>Chức năng</th>
                 </tr>`;
             for(key in result){
-                console.log(result[key]['masanpham'])
                 str+=`<tr>
                 <td>${result[key]['masanpham']}</td>
                 <td>${result[key]['tensanpham']}</td>
