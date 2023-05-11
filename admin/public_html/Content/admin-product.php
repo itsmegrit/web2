@@ -2,9 +2,9 @@
     <div class="admin-product-title"><label>Quản lý sản phẩm</label></br>
     <a href="admin.php?id=sp&action=add" class="admin-product-button-add" style="text-decoration: none;">+ Thêm<a>
     </div>
-    <div class="admin-div-table-product">
+    <div class="admin-div-table-product" id="admin-div-table-product">
         <input type="hidden" name="id" value="sp">
-    <table class="admin-table-product" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
+    <table class="admin-table-product" id="admin-table-product" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
         <tr>
             <th>Mã sản phẩm</th>
             <th>Tên sản phẩm</th>
@@ -16,9 +16,8 @@
        include '..\\config/Connect.php';
        include 'admin-product-handle.php';
        $con=new Connect();
-       if(!isset($_POST["sotrang"])&&!isset($_POST["theloai"])){
+       if(!isset($_POST["sotrang"])){
         $result=$con->selectsql("sanpham","*","where tinhtrang=1 limit 0,5");
-        $con->closeConnect();
         if($result->num_rows>0){
             while($row=$result->fetch_assoc()){
                     echo "<tr>
@@ -35,7 +34,22 @@
                 </tr>";
             }
         }
+            $result=$con->selectsql("sanpham");
+            $sotrang=floor($result->num_rows/10)+1;
+            //Các nút trang sản phẩm
+            echo "</table></div><div class='admin-product-button-phantrang'>
+            <ul>";
+            for($i=1;$i<=$sotrang;$i++){
+                if($i==1){
+                    echo "<li class='adminproduct-button-phantrang' sotrang='$i' theloai='sanpham'  style='background-color: gray;'>$i</li>";
+                }
+                else{
+                    echo "<li class='adminproduct-button-phantrang' sotrang='$i'  theloai='sanpham'>$i</li>";
+                }
+            }
+            echo "</ul>";
     }
+    $con->closeConnect();
             // include '..\\config/Connect.php';
             // include 'admin-product-handle.php';
             // // Create connection
@@ -62,26 +76,6 @@
             // }
             // $conn->closeConnect();
         ?>
-    </table>
-    </div>
-    <div class="admin-product-button-phantrang">
-    <?php 
-    $con=new Connect();
-    $result=$con->selectsql("sanpham");
-    $sotrang=floor($result->num_rows/10)+1;
-    //Các nút trang sản phẩm
-    echo "<ul>";
-    for($i=1;$i<=$sotrang;$i++){
-        if($i==1){
-            echo "<li class='adminproduct-button-phantrang' sotrang='$i' theloai='sanpham'  style='background-color: gray;'>$i</li>";
-        }
-        else{
-            echo "<li class='adminproduct-button-phantrang' sotrang='$i'  theloai='sanpham'>$i</li>";
-        }
-    }
-    echo "</ul>";
-    $con->closeConnect();
-    ?>
     </div>
     <script>
         function Del(){

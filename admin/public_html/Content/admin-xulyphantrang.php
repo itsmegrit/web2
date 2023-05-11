@@ -11,9 +11,9 @@
             while ($row = $result->fetch_assoc())
             {
                 $arr[$row['masanpham']] = $row ;   
-                echo "$row[masanpham]";
             }
         }
-        return $arr;
+        echo json_encode($arr);
+        exit;
     // }
 ?>
