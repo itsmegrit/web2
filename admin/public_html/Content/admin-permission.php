@@ -14,11 +14,10 @@
        include 'admin-permission-del.php';
        include 'admin-permission-handle.php';
        $conn=new Connect();
-        $result = $conn->selectsql("quyen");
+        $result = $conn->selectsql("quyen","*","where tinhtrang=1");
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
-                if($row["tinhtrang"]==1){
                 echo "<tr>
                     <td>$row[maquyen]</td>
                     <td>$row[tenquyen]</td>
@@ -26,7 +25,7 @@
                     <input type='hidden' name='id' value='q'>
                     <input type='hidden' name='idpermission' value='$row[maquyen]'>";
                 if($row["maquyen"]=="001"){
-                    echo "<input type='submit' value='Xóa' class='admin-permission-del' name='function' disabled>
+                    echo "
                     <a href='admin.php?id=q&&action=edit&&idpermission=$row[maquyen]' class='admin-permission-Edit' style='text-decoration: none;'>Sửa<a>
                     </form>
                     </td>
@@ -38,7 +37,6 @@
                     </form>
                     </td>
                 </tr>";
-                }
               }
             }
             } 
@@ -48,7 +46,7 @@
     </div>
     <script>
             function DelPer(){
-            Chosse=confirm("Bạn chắc chắn xóa quyền này ?")
+            Chosse=confirm("Bạn chắc chắn xóa quyền này (có khả năng tài khoản thuộc quyền này cũng sẽ bị xóa) ?")
             if(Chosse){
                 return true
             }

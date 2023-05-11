@@ -1,4 +1,4 @@
-<form name="AdminProductAdd" onsubmit="return AddProduct()" class="AdminProductAdd" action="admin.php">
+<form name="AdminProductAdd" onsubmit="" class="AdminProductAdd" action="admin.php">
             <a href="admin.php?id=sp" class="admin-product-add-back" style="text-decoration: none;"><< Trở về<a> 
         <div class="AdminProductAddTitle">
             <label style="font-size: 30px;">Thêm sản phẩm</label></br>
@@ -32,19 +32,19 @@
             <input type="text" name="AdmintxtDetail" placeholder="Nhập tên nhà cung cấp hoặc mã nhà cung cấp" name="AdmintxtDetail" class="AdmintxtDetail"></br>
             <div class="AdminAddProductIamge">
             <label>Hình ảnh 1: </label>
-            <input type="file" name="AdmintxtIamge1" class="AdmintxtIamge1" data-multiple-caption="{count} files selected" 
+            <input type="file" name="AdmintxtImage1" class="AdmintxtImage1" data-multiple-caption="{count} files selected" 
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="1">
             <img id="image1"></br>
             <label>Hình ảnh 2: </label>
-            <input type="file" name="AdmintxtIamge2" class="AdmintxtIamge2" data-multiple-caption="{count} files selected"
+            <input type="file" name="AdmintxtImage2" class="AdmintxtImage2" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="2">
             <img id="image2"></br>
             <label>Hình ảnh 3: </label>
-            <input type="file" name="AdmintxtIamge3" class="AdmintxtIamge3" data-multiple-caption="{count} files selected"
+            <input type="file" name="AdmintxtImage3" class="AdmintxtImage3" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="3">
             <img id="image3"></br>
             <label>Hình ảnh 4: </label>
-            <input type="file" name="AdmintxtIamge4" class="AdmintxtIamg4" data-multiple-caption="{count} files selected"
+            <input type="file" name="AdmintxtImage4" class="AdmintxtImage4" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="4">
             <img id="image4">
             </div>
@@ -74,13 +74,13 @@
             width: 90%;
             height: 30px;
         }
-        .AdminAddProductIamge input{
+        .AdminAddProductImage input{
             width: 40%;
             height: 30px;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-        .AdminAddProductIamge img{
+        .AdminAddProductImage img{
             width: 100px;
             height: 100px;
         }
@@ -97,7 +97,6 @@
             var Productname=document.AdminProductAdd.AdmintxtProductname
             var Price=document.AdminProductAdd.AdmintxtPrice
             var Provide=document.AdminProductAdd.AdmintxtProvide
-            var UnitProduce=document.AdminProductAdd.AdmintxtUnitProduce
             var Detail=document.AdminProductAdd.AdmintxtDetail
             var Quantity=document.AdminProductAdd.AdmintxtQuantity
             var alert=document.AdminProductAdd.AdmintxtAlert
@@ -127,12 +126,6 @@
                 alert.type="text"
                 alert.value="Hãy nhập giá bán"
                 Price.focus()
-                return false
-            }
-            if(!UnitProduce.value){
-                alert.type="text"
-                alert.value="Hãy nhập đơn vị sản xuất"
-                UnitProduce.focus()
                 return false
             }
             if(!Detail.value){
@@ -200,21 +193,3 @@
             }
     }
 </script>
-<?php 
-    if(isset($_GET["AdmintxtProductName"])){
-    $productname=$_GET["AdmintxtProductName"];
-    $price=$_GET["AdmintxtPrice"];
-    $category=$_GET["AdmintxtProductCategory"];
-    $provide=$_GET["AdmintxtProvide"];
-    $unitproduce=$_GET["AdmintxtUnitProduce"];
-    $detail=$_GET["AdmintxtDetail"];
-    $quantity=$_GET["AdmintxtQuantity"];
-    if($conn->insertsql("Product","('$productname','$price','$category','$provide','$unitproduce','$detail','$quantity')")){
-        //Thành công
-    }
-    else{
-        //Thất bại
-    }
-    $con->closeConnect();
-}
-?>

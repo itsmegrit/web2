@@ -1,6 +1,7 @@
 <?php 
-    if(isset($_GET["AdmintxtProductName"])){
+if(isset($_GET["AdmintxtProductName"])){
     $con=new Connect();
+    $productID=$_GET["AdmintxtProductID"];
     $productname=$_GET["AdmintxtProductName"];
     $price=$_GET["AdmintxtPrice"];
     $category=$_GET["AdmintxtProductCategory"];
@@ -8,23 +9,37 @@
     $unitproduce=$_GET["AdmintxtUnitProduce"];
     $detail=$_GET["AdmintxtDetail"];
     $quantity=$_GET["AdmintxtQuantity"];
-    if($_GET["AdminpermissionAddDetailSubmit"]=="Thêm"){
-        $con->insertsql("sanpham","VALUES ('$productname','$price','$category','$provide','$unitproduce','$detail','$quantity')");
+    $hinh1=$_GET["AdmintxtImage1"];
+    $hinh2=$_GET["AdmintxtImage2"];
+    $hinh3=$_GET["AdmintxtImage3"];
+    $hinh4=$_GET["AdmintxtImage4"];
+    if(isset($_GET["AdminpermissionAddDetailSubmit"])){
+        $con->insertsql("sanpham","VALUES ('$productID','$productname','$price','$provide','$quantity','$detail','$hinh1','$hinh2','$hinh3','$hinh4',1)");
+        foreach($category as $temp => $cate){
+            $con->insertsql("chitietsanpham","VALUES ('$productID','$cate')");
+        }
     }
-    if($_GET["AdminpermissionEditDetailSubmit"]=="Chỉnh Sửa"){
+    if(isset($_GET["AdminpermissionEditDetailSubmit"])){
+        $con->editsql("sanpham","masanpham='$productID'","tensanpham='$productname',giaban='$price',nhacungcap='$provide',soluongton='$quantity',motachitiet='$detail',hinhanh1='$hinh1',hinhanh2='$hinh2',hinhanh3='$hinh3',hinhanh4='$hinh4'");
+        $con->delsql("chitietsanpham","where masanpham=$productID");
+        foreach($category as $temp => $cate){
+            $con->insertsql("chitietsanpham","VALUES ('$productID','$cate')");
+        }
     }
     $con->closeConnect();
-    header("Location:admin.php?id=tk");
+    header("Location:admin.php?id=sp");
 }
-if(isset($_GET["function"])&&isset($_GET["idaccount"])){
-    $con=new Connect();
-if($_GET["function"]=="Khôi phục"){
-    $con->editsql("sanpham","mataikhoan='$_GET[idproduct]'","trangthai='1'");     
-    }
-if($_GET["function"]=="Xoá"){
-    $con->editsql("sanpham","mataikhoan='$_GET[idproduct]'","trangthai='0'");     
-}
-    $con->closeConnect();
-    header("Location:admin.php?id=tk");
+if(isset($_GET["function"])&&isset($_GET["idproduct"])){
+    // if($_GET["function"]=="Khôi phục"){
+    //     $con=new Connect();
+    //     $con->editsql("sanpham","masanpham='$_GET[idproduct]'","tinhtrang=1");
+    //     $con->closeConnect();     
+    // }
+    if($_GET["function"]=="Xóa"){
+        $con=new Connect();
+        $con->editsql("sanpham","masanpham='$_GET[idproduct]'","tinhtrang=0"); 
+        $con->closeConnect();   
+    }    
+    header("Location:admin.php?id=sp");   
 }
 ?>

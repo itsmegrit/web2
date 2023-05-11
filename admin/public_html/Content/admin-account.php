@@ -18,11 +18,10 @@
         include '..\\config/Connect.php';
         include 'admin-account-handle.php';
         $conn=new Connect();
-        $result = $conn->selectsql("taikhoan as tk,quyen as q","*","where tk.maquyen=q.maquyen");
+        $result = $conn->selectsql("taikhoan as tk,quyen as q","*","where tk.maquyen=q.maquyen and tk.trangthai=1");
             if ($result->num_rows > 0) {
               // output data of each row
               while($row = $result->fetch_assoc()) {
-                if($row["trangthai"]==1){
                 echo "<tr>
                     <td>$row[mataikhoan]</td>
                     <td>$row[tentaikhoan]</td>
@@ -32,7 +31,7 @@
                     <input type='hidden' name='id' value='tk'>
                     <input type='hidden' name='idaccount' value='$row[mataikhoan]'>";
                 if($row["maquyen"]=="001"){
-                    echo "<input type='submit' class='admin-account-del' name='function' value='Xóa' disabled>
+                    echo "
                     <a href='admin.php?id=tk&action=edit&idaccount=$row[mataikhoan]' class='admin-account-Edit' style='text-decoration: none;'>Sửa<a> 
                     </form>
                     </td>
@@ -44,7 +43,6 @@
                     </form>
                     </td>
                 </tr>";
-                }
             }
               }
             } 

@@ -16,7 +16,7 @@
             $row = $result->fetch_assoc();
             echo "
             <label>Mã tài khoản: </label></br>
-            <input type='text' name='AdmintxtID' readonly disabled value='$row[mataikhoan]'></br>
+            <input type='text' name='AdmintxtID' readonly value='$row[mataikhoan]'></br>
             <input type='hidden' name='AdmintxtID' value='$row[mataikhoan]'>
             <label>Username: </label></br>
             <input type='text' name='AdmintxtUsername' readonly disabled value='$row[tentaikhoan]'></br>

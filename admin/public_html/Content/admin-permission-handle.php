@@ -4,14 +4,14 @@
     $permissionid=$_GET["AdmintxtpermissionID"];
     $permissionname=$_GET["Admintxtpermissionname"];
     $perfunc=$_GET['Admintxtpermissionfunc'];
-    if($_GET["AdminpermissionAddDetailSubmit"]=="Thêm"){
+    if(isset($_GET["AdminpermissionAddDetailSubmit"])){
     $con->insertsql("quyen","VALUES ('$permissionid','$permissionname',1)");
     foreach($perfunc as $id => $func){
         $con->insertsql("quyenvachucnang","VALUES ('$permissionid','$func')");
     }
     }
-    if($_GET["AdminpermissionEditDetailSubmit"]=="Chỉnh Sửa"){
-    $con->delsql("quyenvachucnang","maquyen='$permissionid'");
+    if(isset($_GET["AdminpermissionEditDetailSubmit"])){
+    $con->editsql("quyen","maquyen=$permissionid","tenquyen='$permissionname'");
         foreach($perfunc as $id => $func){
             $con->insertsql("quyenvachucnang","VALUES ('$permissionid','$func')");
         }
