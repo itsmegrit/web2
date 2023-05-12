@@ -1,33 +1,12 @@
 .header-container {
-  padding: 10px;
-  padding-top: 20px;
-  background-color: azure;
+    padding: 10px;
+    padding-top: 20pxpu;
+    background-color: rgb(255, 255, 255);
 }
 
-.header-mr-8px {
-  margin-right: 8px;
+.menu-nav {
+    background-color: rgb(249, 158, 2);
 }
 
-.header-mr-16px {
-  margin-right: 16px;
-}
-
-.header-ml-76px {
-  margin-left: 76px;
-}
-
-.header-h-32px {
-  height: 32px;
-}
-
-.header-btn:hover {
-  cursor: pointer;
-  background-color: blueviolet;
-}
-
-.header-btn {
-  border-bottom: 1px solid #000;
-  border-radius: 8px;
-}
 
 /*# sourceMappingURL=headerStyle.css.map */

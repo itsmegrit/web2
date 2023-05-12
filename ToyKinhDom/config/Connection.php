@@ -4,9 +4,9 @@ class Connect
   public $conn;
   function __construct()
   {
-    $servername = "localhost:3307";
-    $username = "QLBDC";
-    $password = "123456";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
     $dbname = "toykingdom";
     $this->conn = new mysqli($servername, $username, $password, $dbname);
     if ($this->conn->connect_error) {

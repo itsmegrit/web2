@@ -1,22 +1,20 @@
-<div class="commonLayout body">
+
+
+
+<div class="commonLayout body ">
   <div class="container">
     <!-- san pham 1 -->
-    <div class="row my-3">
+    <div class="row mt-6">
       <span class="border">
         <div class="row">
           <h2>Do choi lego</h2>
 
-          <a href="#">Xem tat ca<i class="fa-sharp fa-solid fa-arrow-right"></i>
-          </a>
+          <div class="col-sm-4">
+          <span class="float-end"><a href="#">Xem tat ca<i class="fa-sharp fa-solid fa-arrow-right"></i></a></span>
         </div>
-        <!-- <div class="col-sm-4">
-                    <div class="float-md-end">
-                        <a href="#">Xem tat ca<i class="fa-sharp fa-solid fa-arrow-right"></i>
-                        </a> -->
+        </div>
       </span>
     </div>
-
-
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <div class="product-grid">
@@ -106,7 +104,7 @@
           <div class="product-image">
             <a href="#" class="image">
               <img class="img-1" src="./public_html/img/demo.jpg">
-              <img class="img-2" src="./public_html/img/demo2.jpg">
+              <img class="img-2" src="./public_html/img/demo2   .jpg">
             </a>
 
             <ul class="product-links">
@@ -250,6 +248,7 @@
             </ul>
             <h3 class="title"><a href="#">Lego 2</a></h3>
             <div class="price">$85.99</div>
+            <a href="logout.php">Đăng xuất</a>
           </div>
         </div>
       </div>
