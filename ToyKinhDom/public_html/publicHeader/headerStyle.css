@@ -4,8 +4,9 @@
     background-color: rgb(255, 255, 255);
 }
 
-.menu-nav {
-    background-color: rgb(249, 158, 2);
+.menu-nav a {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 

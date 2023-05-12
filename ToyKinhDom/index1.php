@@ -18,26 +18,43 @@
   <link rel="stylesheet" type="text/css" href="./public_html/publicHeader/headerStyle.css?<?php echo time(); ?>">
   <link rel="stylesheet" type="text/css" href="./public_html/publicBody/bodyStyle.css?<?php echo time(); ?>">
   <link rel="stylesheet" type="text/css" href="./public_html/publicFooter/footerStyle.css?<?php echo time(); ?>">
- 
+  <link rel="stylesheet" type="text/css" href="./public_html/publicBody/productdetail.css?<?php echo time(); ?>">
   <link rel="stylesheet" href="./includes/fontawesome-free-6.4.0-web/css/fontawesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+
   <div id="header">
     <?php
+   
     include('./public_html/publicHeader/header.php')
       ?>
   </div>
 
   <div id="body">
     <?php
+   if(isset($_GET['action'])){
+    $page=$_GET['action'];
+    if($page=='quanlisanpham'){
+      include('./public_html/publicBody/productlist.php');
+    }
+    else if($page=='sanpham'){
+      include('./public_html/publicBody/productdetail.php');
+    }else{
+      include('./public_html/publicBody/body.php');
+    }
+   
+  }else{
     include('./public_html/publicBody/body.php');
+  }
+    
     ?>
   </div>
 
   <div id="footer">
     <?php
+   
     include('./public_html/publicFooter/footer.php')
       ?>
   </div>

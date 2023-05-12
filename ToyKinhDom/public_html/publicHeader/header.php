@@ -3,7 +3,7 @@
   <div class="header-container">
     <div class="row">
       <div class="col-sm-2">
-        <img class="img-responsive" src="./public_html/img/logo.png" alt="Chania" id="">
+        <a href="index1.php"> <img class="img-responsive" src="./public_html/img/logo.png" alt="Chania" id=""></a>
       </div>
       <div class="input-group col-sm-5">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -38,28 +38,19 @@
     <div class ="row">
     <nav class="navbar navbar-expand-sm bg-info">
     <div class="container-fluid">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav menu-nav">
+          <?php
+          include ("./config/Connection.php");
+          $conn=new Connect();
+          $productCat=$conn->selectsql("theloai","*");
+          while($row = mysqli_fetch_array($productCat)){         
+          ?>
       <li class="nav-item">
-        <a class="nav-link" href="#">LEGO</a>
+        <a class="nav-link" href="index1.php?action=quanlisanpham&id=<?php echo $row['matheloai']?>"><?php echo $row['tentheloai']?></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Xe đua</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">/a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 3</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 3</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 3</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 3</a>
-      </li>
+      <?php
+      }
+      ?>
     </ul>
   </div>
     </nav>

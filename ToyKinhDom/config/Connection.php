@@ -19,7 +19,7 @@ class Connect
   }
   function selectsql($table, $colum = "*", $condition = null)
   {
-    $sql = "SELECT $colum from $table $condition";
+    $sql = "SELECT $colum from $table $condition ";
     $result = $this->conn->query($sql);
     return $result;
   }
