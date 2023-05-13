@@ -11,12 +11,13 @@
     }
     }
     if(isset($_GET["AdminpermissionEditDetailSubmit"])){
-    $con->editsql("quyen","maquyen=$permissionid","tenquyen='$permissionname'");
+    $con->delsql("quyenvachucnang","maquyen='$permissionid'");
+    $con->editsql("quyen","maquyen='$permissionid'","tenquyen='$permissionname'");
         foreach($perfunc as $id => $func){
             $con->insertsql("quyenvachucnang","VALUES ('$permissionid','$func')");
         }
     }
     $con->closeConnect();
-    header("Location:admin.php?id=q");
+    // header("Location:admin.php?id=q");
 }
 ?>

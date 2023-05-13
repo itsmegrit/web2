@@ -35,7 +35,7 @@
             }
         }
             $result=$con->selectsql("sanpham");
-            $sotrang=floor($result->num_rows/10)+1;
+            $sotrang=floor($result->num_rows/5)+1;
             //Các nút trang sản phẩm
             echo "</table></div><div class='admin-product-button-phantrang'>
             <ul>";

@@ -26,27 +26,29 @@
             <input type="text" name="AdmintxtPrice" placeholder="Nhập giá bán" class="AdmintxtPrice"></br>
             <label>Nhà cung cấp: </label></br> 
             <input type="text" name="AdmintxtProvide" placeholder="Nhập tên nhà cung cấp hoặc mã nhà cung cấp" name="AdmintxtProvide" class="AdmintxtProvide"></br>
-            <label>Đơn vị sản xuất: </label></br> 
-            <input type="text" name="AdmintxtUnitProduce" placeholder="Nhập đơn vị sản xuất" name="AdmintxtUnitProduce" class="AdmintxtUnitProduce"></br>
             <label>Mô tả chi tiết: </label></br> 
             <input type="text" name="AdmintxtDetail" placeholder="Nhập tên nhà cung cấp hoặc mã nhà cung cấp" name="AdmintxtDetail" class="AdmintxtDetail"></br>
-            <div class="AdminAddProductIamge">
+            <div class="AdminAddProductImage">
             <label>Hình ảnh 1: </label>
             <input type="file" name="AdmintxtImage1" class="AdmintxtImage1" data-multiple-caption="{count} files selected" 
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="1">
-            <img id="image1"></br>
+            <img id="image1">
+            <li onclick="DeleteImage(1)">Xóa hình</li><br>
             <label>Hình ảnh 2: </label>
-            <input type="file" name="AdmintxtImage2" class="AdmintxtImage2" data-multiple-caption="{count} files selected"
+            <input type="file" name="AdmintxtImage2"  class="AdmintxtImage2" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="2">
-            <img id="image2"></br>
+            <img id="image2">
+            <li onclick="DeleteImage(2)">Xóa hình</li><br>
             <label>Hình ảnh 3: </label>
             <input type="file" name="AdmintxtImage3" class="AdmintxtImage3" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="3">
-            <img id="image3"></br>
+            <img id="image3">
+            <li onclick="DeleteImage(3)">Xóa hình</li><br>
             <label>Hình ảnh 4: </label>
-            <input type="file" name="AdmintxtImage4" class="AdmintxtImage4" data-multiple-caption="{count} files selected"
+            <input type="file" name="AdmintxtImage4"  class="AdmintxtImage4" data-multiple-caption="{count} files selected"
                     accept="image/gif, image/jpeg, image/png" onchange="ChooseFile(this)" id="4">
             <img id="image4">
+            <li onclick="DeleteImage(4)">Xóa hình</li><br>
             </div>
             <label>Số lượng tồn: </label></br> 
             <input type="text" name="AdmintxtQuantity" placeholder="Nhập số lượng tồn" name="AdmintxtQuantity" class="AdmintxtQuantity"></br>
@@ -84,6 +86,18 @@
             width: 100px;
             height: 100px;
         }
+        .AdminAddProductImage li{
+            display: inline;
+            border: solid 2px black;
+            padding: 2px 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+            background-color: red;
+            color: white;
+        }
+        .AdminAddProductImage li:hover{
+            background-color: blue;
+        }
         .Productcategory input{
             width: 3%;
             height: 15px;
@@ -91,25 +105,25 @@
         }
     </style>
     <script>
+        function DeleteImage(number){
+            debugger;
+            document.getElementById("image"+number).src=""
+            document.getElementById(""+number).value=""
+            event.preventDefault();
+        }
         function AddProduct(){
             //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
             var ProductID=document.AdminProductAdd.AdmintxtProductID
             var Productname=document.AdminProductAdd.AdmintxtProductname
             var Price=document.AdminProductAdd.AdmintxtPrice
             var Provide=document.AdminProductAdd.AdmintxtProvide
+            var Category=document.AdminProductAdd.AdmintxtProductCategory
+            var image=document.getElementById("image1")
             var Detail=document.AdminProductAdd.AdmintxtDetail
             var Quantity=document.AdminProductAdd.AdmintxtQuantity
             var alert=document.AdminProductAdd.AdmintxtAlert
-            var checkID=/[a-z-A-Z]{3}\d{4}$/
-            //có thể ko cần kiểm tra đúng kiểu dữ liệu tên sản phẩm
-            var checkProductname= /^SV\d{5}\.$/
-            var checkPrice= /\d{6,10}\đ$/
-            //Thể loại không cần check vì nó sẽ là select nên sẽ lun có dữ liệu//
-            //Nhà cung cấp có khả năng không cần check//
-            // var checkProvide= /^SV\d{5}\.$/
-            // var checkUnitProduce= /^SV\d{5}\.$/
+            var checkPrice= /\d{6,10}$/
             var checkQuantity= /\d{1,4}$/
-            var checkDetail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
             if(!ProductID.value){
                 alert.type="text"
                 alert.value="Hãy nhập mã sản phẩm"
@@ -120,6 +134,17 @@
                 alert.type="text"
                 alert.value="Hãy nhập tên sản phẩm"
                 Productname.focus()
+                return false
+            }
+            var flag=false
+            for(var i in Category){
+                if(i.checked){
+                    flag=true
+                }
+            }
+            if(flag==false){
+                alert.type="text"
+                alert.type="Hãy chon ít nhất 1 thể loại sản phẩm"
                 return false
             }
             if(!Price.value){
@@ -138,18 +163,6 @@
                 alert.type="text"
                 alert.value="Hãy nhập số lượng"
                 Quantity.focus()
-                return false
-            }
-            if(!checkProductID.test(ProductID.value)){
-                alert.type="text"
-                alert.value="Sai định dạng mã sản phẩm"
-                ProductID.focus()
-                return false
-            }
-            if(!checkProductname.test(Productname.value)){
-                alert.type="text"
-                alert.value="Sai định dạng tên sản phẩm"
-                Productname.focus()
                 return false
             }
             if(!checkPrice.test(Price.value)){

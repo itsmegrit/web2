@@ -45,27 +45,31 @@
             <input type='text' name='AdmintxtProvide'  value='$row[nhacungcap]' name='AdmintxtProvide' class='AdmintxtProvide'></br>
             <label>Mô tả chi tiết: </label></br> 
             <input type='text' name='AdmintxtDetail' value='$row[motachitiet]' name='AdmintxtDetail' class='AdmintxtDetail'></br>
-            <div class='AdminEditProductIamge'>
+            <div class='AdminEditProductImage'>
             <label>Hình ảnh 1: </label></br>
-            <input type='file' class='AdmintxtIamge1' data-multiple-caption='{count} files selected' 
+            <input type='file' class='AdmintxtImage1' data-multiple-caption='{count} files selected' 
                     accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='1'>
-            <input type='hidden' name='AdmintxtImage1' value='$row[hinhanh1]'>
-            <img id='image1' src='../../PictureProduct/$row[hinhanh1]'></br>
+            <input type='hidden' name='AdmintxtImage1' value='$row[hinhanh1]' id='AdmintxtImage1'>
+            <img id='image1' src='../../PictureProduct/$row[hinhanh1]'>
+            <li onclick='DeleteImage(1)'>Xóa hình</li></br>
             <label>Hình ảnh 2: </label></br>
-            <input type='file' class='AdmintxtIamge2' data-multiple-caption='{count} files selected'
+            <input type='file' class='AdmintxtImage2' data-multiple-caption='{count} files selected'
                     accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='2'>
-            <input type='hidden' name='AdmintxtImage2' value='$row[hinhanh2]'>
-            <img id='image2' src='../../PictureProduct/$row[hinhanh2]'></br>
+            <input type='hidden' name='AdmintxtImage2' value='$row[hinhanh2]' id='AdmintxtImage2'>
+            <img id='image2' src='../../PictureProduct/$row[hinhanh2]'>
+            <li onclick='DeleteImage(2)'>Xóa hình</li></br>
             <label>Hình ảnh 3: </label></br>
-            <input type='file' name='AdmintxtIamg3' class='AdmintxtIamge3' data-multiple-caption='{count} files selected'
+            <input type='file' class='AdmintxtImage3' data-multiple-caption='{count} files selected'
                     accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='3'>
-            <input type='hidden' name='AdmintxtImage3' value='$row[hinhanh3]'>
-            <img id='image3' src='../../PictureProduct/$row[hinhanh3]'></br>
+            <input type='hidden' name='AdmintxtImage3' value='$row[hinhanh3]' id='AdmintxtImage3'>
+            <img id='image3' src='../../PictureProduct/$row[hinhanh3]'>
+            <li onclick='DeleteImage(3)''>Xóa hình</li></br>
             <label>Hình ảnh 4: </label></br>
-            <input type='file' name='AdmintxtIamge4' class='AdmintxtIamg4' data-multiple-caption='{count} files selected'
+            <input type='file' name='AdmintxtImage4' class='AdmintxtIamg4' data-multiple-caption='{count} files selected'
                     accept='image/gif, image/jpeg, image/png' onchange='ChooseFile(this)' id='4' value='$row[hinhanh4]'>
-            <input type='hidden' name='AdmintxtImage4' value='$row[hinhanh4]'>
+            <input type='hidden' name='AdmintxtImage4' value='$row[hinhanh4]' id='AdmintxtImage4'>
             <img id='image4' src='../../PictureProduct/$row[hinhanh4]'>
+            <li onclick='DeleteImage(4)''>Xóa hình</li>
             </div>
             <label>Số lượng tồn: </label></br> 
             <input type='text' name='AdmintxtQuantity' class='AdmintxtQuantity' value='$row[soluongton]'></br>
@@ -130,15 +134,27 @@
             width: 90%;
             height: 30px;
         }
-        .AdminEditProductIamge input{
+        .AdminEditProductImage input{
             width: 40%;
             height: 30px;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-        .AdminEditProductIamge img{
+        .AdminEditProductImage img{
             width: 100px;
             height: 100px;
+        }
+        .AdminEditProductImage li{
+            display: inline;
+            border: solid 2px black;
+            padding: 2px 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+            background-color: red;
+            color: white;
+        }
+        .AdminEditProductImage li:hover{
+            background-color: blue;
         }
         .ProductCategory input{
             width: 3%;
@@ -147,22 +163,25 @@
         }
     </style>
     <script>
+         function DeleteImage(number){
+            debugger;
+            document.getElementById("AdmintxtImage"+number).value=""
+            document.getElementById("image"+number).src=""
+            document.getElementById(""+number).value=""
+            event.preventDefault();
+        }
        function EditProduct(){
             //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
             var Productname=document.AdminProductEdit.AdmintxtProductname
             var Price=document.AdminProductEdit.AdmintxtPrice
+            var Category=document.AdminProductAdd.AdmintxtProductCategory
+            var image=document.getElementById("image1")
             var Provide=document.AdminProductEdit.AdmintxtProvide
             var Detail=document.AdminProductEdit.AdmintxtDetail
             var Quantity=document.AdminProductEdit.AdmintxtQuantity
             var alert=document.AdminProductEdit.AdmintxtAlert
-            var checkProductname= /^SV\d{5}\.$/
             var checkPrice= /\d{6,10}$/
-            //Thể loại không cần check vì nó sẽ là select nên sẽ lun có dữ liệu//
-            //Nhà cung cấp có khả năng không cần check//
-            var checkProvide= /^SV\d{5}\.$/
-            var checkUnitProduce= /^SV\d{5}\.$/
             var checkQuantity= /\d{1,4}$/
-            var checkDetail= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             if(!Productname.value){
                 alert.type="text"
                 alert.value="Hãy nhập tên sản phẩm"
@@ -175,7 +194,23 @@
                 Price.focus()
                 return false
             }
-            if(!UnitProduce.value){
+            var flag=false
+            for(var i in Category){
+                if(i.checked){
+                    flag=true
+                }
+            }
+            if(flag==false){
+                alert.type="text"
+                alert.type="Hãy chon ít nhất 1 thể loại sản phẩm"
+                return false
+            }
+            if(!image.src){
+                alert.type="text"
+                alert.value="Hãy chọn ít nhất 1 hình ảnh của sản phẩm"
+                return false
+            }
+            if(!Provide.value){
                 alert.type="text"
                 alert.value="Hãy nhập đơn vị sản xuất"
                 UnitProduce.focus()
@@ -193,12 +228,6 @@
                 Quantity.focus()
                 return false
             }
-            if(!checkProductname.test(Productname.value)){
-                alert.type="text"
-                alert.value="Sai định dạng tên sản phẩm"
-                Productname.focus()
-                return false
-            }
             if(!checkPrice.test(Price.value)){
                 alert.type="text"
                 alert.value="Sai định dạng giá bán"
@@ -211,7 +240,7 @@
                 Quantity.focus()
                 return false
             }
-            alert("Thêm sản phẩm thành công")
+            alert("Sửa sản phẩm thành công")
         return true
         }
         function ChooseFile(file){
@@ -219,27 +248,28 @@
                 var reader=new FileReader();
                 switch(file.id){
                     case "1":
-                        document.AdminProductEdit.AdmintxtImage1.value=file.file[0]
                     reader.onload= function(e){
+                        document.AdminProductEdit.AdmintxtImage1.value=file.files[0]["name"]
                     $('#image1').attr('src',e.target.result);}
                     break
                     case "2":
-                        document.AdminProductEdit.AdmintxtImage2.value=file.file[0]
                     reader.onload= function(e){
+                        document.AdminProductEdit.AdmintxtImage2.value=file.files[0]["name"]
                     $('#image2').attr('src',e.target.result);}
                     break
                     case "3":
-                        document.AdminProductEdit.AdmintxtImage3.value=file.file[0]
                     reader.onload= function(e){
+                        document.AdminProductEdit.AdmintxtImage3.value=file.files[0]["name"]
                     $('#image3').attr('src',e.target.result);}
                     break
                     case "4":
-                        document.AdminProductEdit.AdmintxtImage4.value=file.file[0]
                     reader.onload= function(e){
+                        document.AdminProductEdit.AdmintxtImage4.value=file.files[0]["name"]
                     $('#image4').attr('src',e.target.result);}
                     break
                     default: break
                 }
+                console.log(file.files[0])
                 reader.readAsDataURL(file.files[0])
             }
     }
