@@ -66,6 +66,28 @@
   </div>
     </nav>
     </div>
+    <?php
+        if(isset($_SESSION['loggedIN'])){
+            if(isset($_POST['infor'])){
+              include_once ("./config/Connection.php");
+              $conn=new Connect();
+              $fullname=$_POST['textName'];
+              $phone=$_POST['textPhone'];
+              $address=$_POST['textAddress'];
+              $email=$_POST['textEmail'];
+              $user=$conn->selectsql("nguoidung","manguoidung","where tennguoidung='$fullname'");
+              if($user->num_rows<0||$user->num_rows==0){
+                $count=$conn->selectsql("nguoidung");
+                  $count=$count->num_rows+1;
+                  $data = $conn->insertsql("nguoidung", "values ('$count','$fullname','$phone','$address',' $email','002','$_SESSION[idAccount]')");
+              }
+            }
+          }
+          // else {
+          //   $message = "Cần phải đăng nhập trước khi nhập thông tin ";
+          //       echo "<script type='text/javascript'>alert('$message');</script>";
+          // }
+        ?>
     <div class="modal  " id="exampleModal" tabindex="-1"  aria-labelledby="exampleModalLabel" >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -73,10 +95,11 @@
         <h5 class="modal-title" id="exampleModalLabel">Thông tin cá nhân</h5>
         <button type="button" class="btn-close mx-2" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form method="post" action="index1.php" name="form1">
       <div class="modal-body">
-        <form method="post" action="ajax-infor.php" name="form1">
+        
+        
         <div class= "form-floating mb-4">
-         
           <input type="text" class="form-control " id="floatingUsername"  placeholder="FullName" name="textName">
           <label for="floatingInputUsername">Họ và tên</label>
         </div>
@@ -92,13 +115,12 @@
         <input type="text" class="form-control " id="floatingEmail"  placeholder="Email"name="textEmail">
           <label for="floatingInputUsername">Email</label>
         </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         <input class="btn  btn-primary btn-login "  id="infor" name ="infor" type="submit" value="Lưu">
-       
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -146,29 +168,6 @@
                 alert("vui lòng nhập địa chỉ email");
                 document.form1.textEmail.focus();
             }
-           
-            else{
-                $.ajax({
-                  infor:1,
-                url:'./public_html/publicHeader/ajax-infor.php',
-                method: 'POST',
-                data:{
-                  infor:1,
-                    fullnamePHP: fullname,
-                    phonePHP: phone,
-                    addressPHP:address,
-                    emailPHP:email,
-                },
-                success:function(response){
-                    if(response.indexOf('success')>=0){
-                        window.location='index1.php';
-                    }
-                   
-                },
-                dataType:'text'
-            });
-            }
-        
         });
     });
 </script>

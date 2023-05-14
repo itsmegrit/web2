@@ -11,8 +11,9 @@
         $password=$_POST['passwordPHP'];
         $data=$conn->selectsql("taikhoan","mataikhoan","where  tentaikhoan='$username' AND matkhau='$password'");
         if($data->num_rows>0){
+            $id=$data->fetch_assoc();
             $_SESSION['loggedIN']=$username;
-            $_SESSION['username']=$username;
+            $_SESSION['idAccount']=$id['mataikhoan'];
             exit("success");
         }
         else{
