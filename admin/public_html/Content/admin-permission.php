@@ -26,7 +26,6 @@
                     <input type='hidden' name='idpermission' value='$row[maquyen]'>";
                 if($row["maquyen"]=="001"){
                     echo "
-                    <a href='admin.php?id=q&&action=edit&&idpermission=$row[maquyen]' class='admin-permission-Edit' style='text-decoration: none;'>Sửa<a>
                     </form>
                     </td>
                 </tr>";

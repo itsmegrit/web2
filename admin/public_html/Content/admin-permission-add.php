@@ -1,13 +1,13 @@
-<form name="AdminpermissionAdd" onsubmit="return Addpermission()" class="AdminpermissionAdd" action="admin.php">
+<form name="AdminpermissionAdd" onsubmit="return Addpermission()" class="AdminpermissionAdd" action="admin.php?id=q" method="POST">
             <a href="admin.php?id=q" class="admin-permission-add-back" style="text-decoration: none;"><< Trở về<a> 
         <div class="AdminpermissionAddTitle">
             <label style="font-size: 30px;">Thêm quyền</label></br>
         </div>
         <div class="AdminpermissionAddDetail">
             <label>Mã quyền: </label></br>
-            <input type="text" name="AdmintxtpermissionID" placeholder="Nhập mã sản phẩm với 3 số vd như 001,002,011,.."  class="AdmintxtpermissionID"></br>
+            <input type="text" name="AdmintxtpermissionID" placeholder="Nhập mã quyền với định dạng là 3 ký tự số"  class="AdmintxtpermissionID"></br>
             <label>Tên quyền: </label></br>
-            <input type="text" name="Admintxtpermissionname" placeholder="Nhập tên sản phẩm"  class="Admintxtpermissionname"></br>
+            <input type="text" name="Admintxtpermissionname" placeholder="Nhập tên quyền"  class="Admintxtpermissionname"></br>
             <div class="Permissionfunction">
             <?php 
             include '..\\config/Connect.php';
@@ -60,22 +60,23 @@
             //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
             var permissionid=document.AdminpermissionAdd.AdmintxtpermissionID
             var permissionname=document.AdminpermissionAdd.Admintxtpermissionname
-            var alert=document.AdminpermissionAdd.AdmintxtAlert
-            var checkid=/"d{3}$"/
+            var checkid=/\d{3}$/
             //có thể ko cần kiểm tra đúng kiểu dữ liệu tên sản phẩm
             if(!permissionid.value){
-                alert.type="text"
-                alert.value="Hãy nhập mã quyền"
+                alert("Hãy nhập mã quyền")
+                permissionname.focus()
+                return false
+            }
+            if(!checkid.test(permissionid.value)){
+                alert("Hãy nhập đúng định dạng mã quyền là 3 kí tự số")
                 permissionname.focus()
                 return false
             }
             if(!permissionname.value){
-                alert.type="text"
-                alert.value="Hãy nhập tên quyền"
+                alert("Hãy nhập tên quyền")
                 permissionname.focus()
                 return false
             }
-            alert("Thêm quyền thành công")
         return true
         }
 </script>

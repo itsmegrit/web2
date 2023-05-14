@@ -1,4 +1,4 @@
-<form name="AdminpermissionEdit" onsubmit="return Editpermission()" class="AdminpermissionEdit">
+<form name="AdminpermissionEdit" onsubmit="return Editpermission()" class="AdminpermissionEdit" action="admin.php?id=q" method="POST">
             <a href="admin.php?id=q" class="admin-permission-Edit-back" style="text-decoration: none;"><< Trở về<a> 
         <div class="AdminpermissionEditTitle">
             <label style="font-size: 30px;">Chỉnh sửa quyền</label></br>
@@ -77,29 +77,10 @@
             //Kiểm tra dữ liệu nếu input bị lỗi thì báo vào thẻ input
             var permissionname=document.AdminpermissionEdit.Admintxtpermissionname
             if(!permissionname.value){
-                alert.type="text"
-                alert.value="Hãy nhập tên sản phẩm"
+                alert("Hãy nhập tên quyền")
                 permissionname.focus()
                 return false
             }
-            alert("Chỉnh sửa quyền thành công")
         return true
         }
 </script>
-<?php 
-    if(isset($_GET["AdmintxtpermissionName"])){
-        $permissionid=$_GET["AdmintxtpermissionID"];
-        $permissionname=$_GET["Admintxtpermissionname"];
-        $perfunc=$_GET["Admintxtpermissionfunc"];
-        if($con->editsql("quyen","maquyen='$permissionid'","tenquyen='$permissionname'")){
-            //Thành công
-        }
-        else{
-            //Thất bại
-        }
-        foreach($perfunc as $func){
-        $con->editsql("quyenvachucnang","maquyen='$permissionid'","machucnnang='$func'");
-        }
-        $con->closeConnect();
-    }
-?>

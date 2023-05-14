@@ -1,4 +1,4 @@
-<form name="AdminAccountAdd" onsubmit="return AddAccount()" class="AdminAccountAdd">
+<form name="AdminAccountAdd" onsubmit="return AddAccount()" class="AdminAccountAdd" action="admin.php?id=tk" method="POST">
         <div class="AdminAccountAddBar">
         <a href="admin.php?id=tk" class="admin-account-add-back" style="text-decoration: none;"><< Trở về<a> 
         </div>    
@@ -25,7 +25,6 @@
             }
             echo "</select></br>";
         ?>
-            <input type="hidden" name="AdmintxtAlert" readonly disabled style="border: white;color: red;"></br>
             <input type="submit" name="AdminAccountAddDetailSubmit" value="Thêm">
             <input type="hidden" name="id" value="tk"></br>
         </div>
@@ -66,39 +65,32 @@
             var password=document.AdminAccountAdd.AdmintxtPassword
             var repassword=document.AdminAccountAdd.AdmintxtRepassword
             var email=document.AdminAccountAdd.AdmintxtEmail
-            var alert=document.AdminAccountAdd.AdmintxtAlert
             var checkpass= /\d{6,15}$/
             if(!username.value){
-                alert.type="text"
-                alert.value="Hãy nhập tên tài khoản"
+                alert("Hãy nhập tên tài khoản")
                 username.focus()
                 return false
             }
             if(!password.value){
-                alert.type="text"
-                alert.value="Hãy nhập mật khẩu"
+                alert("Hãy nhập mật khẩu")
                 password.focus()
                 return false
             }
             if(!repassword.value){
-                alert.type="text"
-                alert.value="Hãy nhập lại mật khẩu"
+                alert("Hãy nhập lại mật khẩu")
                 repassword.focus()
                 return false
             }
             if(password.value!=repassword.value){
-                alert.type="text"
-                alert.value="Nhập lại mật khẩu không giống mật khẩu đã nhập"
+                alert("Nhập lại mật khẩu không giống mật khẩu đã nhập")
                 repassword.focus()
                 return false
             }
             if(!checkpass.test(password.value)){
-                alert.type="text"
-                alert.value="Sai định dạng mật khẩu"
+                alert("Sai định dạng mật khẩu")
                 password.focus()
                 return false
             }
-            alert("Đăng ký thành công")
         return true
         }
     </script>

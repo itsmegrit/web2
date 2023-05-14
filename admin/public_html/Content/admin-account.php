@@ -5,6 +5,10 @@
     <a href="admin.php?id=tk&action=add" class="admin-account-button-add" style="text-decoration: none;"><li>+ Thêm</li></a>
     </ul>
     </div>
+    <?php
+            include '..\\config/Connect.php';
+            include 'admin-account-handle.php';
+    ?>
     <div class="admin-div-table-account">
     <table class="admin-table-account" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
         <tr>
@@ -15,8 +19,6 @@
             <th>Chức năng</th>
         </tr>
        <?php 
-        include '..\\config/Connect.php';
-        include 'admin-account-handle.php';
         $conn=new Connect();
         $result = $conn->selectsql("taikhoan as tk,quyen as q","*","where tk.maquyen=q.maquyen and tk.trangthai=1");
             if ($result->num_rows > 0) {

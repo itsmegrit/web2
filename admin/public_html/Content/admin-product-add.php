@@ -1,4 +1,4 @@
-<form name="AdminProductAdd" onsubmit="" class="AdminProductAdd" action="admin.php">
+<form name="AdminProductAdd" onsubmit="return AddProduct()" class="AdminProductAdd" action="admin.php?id=sp" method="POST">
             <a href="admin.php?id=sp" class="admin-product-add-back" style="text-decoration: none;"><< Trở về<a> 
         <div class="AdminProductAddTitle">
             <label style="font-size: 30px;">Thêm sản phẩm</label></br>
@@ -52,7 +52,6 @@
             </div>
             <label>Số lượng tồn: </label></br> 
             <input type="text" name="AdmintxtQuantity" placeholder="Nhập số lượng tồn" name="AdmintxtQuantity" class="AdmintxtQuantity"></br>
-            <input type="hidden" name="AdmintxtAlert" readonly disabled style="border: white;color: red;"></br>
             <input type="hidden" name="id" value="sp"></br>
             <input type="submit" name="AdminProductAddDetailSubmit" class="AdminProductAddButton" value="Thêm">
         </div>
@@ -117,67 +116,58 @@
             var Productname=document.AdminProductAdd.AdmintxtProductname
             var Price=document.AdminProductAdd.AdmintxtPrice
             var Provide=document.AdminProductAdd.AdmintxtProvide
-            var Category=document.AdminProductAdd.AdmintxtProductCategory
+            var Category=document.querySelectorAll(".AdmintxtProductCategory")
             var image=document.getElementById("image1")
             var Detail=document.AdminProductAdd.AdmintxtDetail
             var Quantity=document.AdminProductAdd.AdmintxtQuantity
-            var alert=document.AdminProductAdd.AdmintxtAlert
             var checkPrice= /\d{6,10}$/
             var checkQuantity= /\d{1,4}$/
             if(!ProductID.value){
-                alert.type="text"
-                alert.value="Hãy nhập mã sản phẩm"
+                alert("Hãy nhập mã sản phẩm")
                 ProductID.focus()
                 return false
             }
             if(!Productname.value){
-                alert.type="text"
-                alert.value="Hãy nhập tên sản phẩm"
+                alert("Hãy nhập tên sản phẩm")
                 Productname.focus()
                 return false
             }
             var flag=false
-            for(var i in Category){
-                if(i.checked){
+            for(let i=0;i<Category.length;i++){
+                if(Category[i].checked){
                     flag=true
+                    break
                 }
             }
             if(flag==false){
-                alert.type="text"
-                alert.type="Hãy chon ít nhất 1 thể loại sản phẩm"
+                alert("Hãy chọn ít nhất 1 thể loại sản phẩm")
                 return false
             }
             if(!Price.value){
-                alert.type="text"
-                alert.value="Hãy nhập giá bán"
+                alert("Hãy nhập giá bán")
                 Price.focus()
                 return false
             }
             if(!Detail.value){
-                alert.type="text"
-                alert.value="Hãy mô tả sản phẩm"
+                alert("Hãy mô tả sản phẩm")
                 Detail.focus()
                 return false
             }
             if(!Quantity.value){
-                alert.type="text"
-                alert.value="Hãy nhập số lượng"
+                alert("Hãy nhập số lượng")
                 Quantity.focus()
                 return false
             }
             if(!checkPrice.test(Price.value)){
-                alert.type="text"
-                alert.value="Sai định dạng giá bán"
+                alert("Sai định dạng giá bán")
                 Price.focus()
                 return false
             }
             if(!checkQuantity.test(Quantity.value)){
-                alert.type="text"
-                alert.value="Sai định dạng số lượng"
+                alert("Sai định dạng số lượng")
                 Quantity.focus()
                 return false
             }
-            alert("Thêm sản phẩm thành công")
         return true
         }
         function ChooseFile(file){

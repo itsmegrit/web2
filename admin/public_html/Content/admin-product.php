@@ -2,6 +2,10 @@
     <div class="admin-product-title"><label>Quản lý sản phẩm</label></br>
     <a href="admin.php?id=sp&action=add" class="admin-product-button-add" style="text-decoration: none;">+ Thêm<a>
     </div>
+    <?php 
+           include '..\\config/Connect.php';
+           include 'admin-product-handle.php';
+    ?>
     <div class="admin-div-table-product" id="admin-div-table-product">
         <input type="hidden" name="id" value="sp">
     <table class="admin-table-product" id="admin-table-product" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
@@ -13,8 +17,6 @@
             <th>Chức năng</th>
         </tr>
        <?php 
-       include '..\\config/Connect.php';
-       include 'admin-product-handle.php';
        $con=new Connect();
        if(!isset($_POST["sotrang"])){
         $result=$con->selectsql("sanpham","*","where tinhtrang=1 limit 0,5");

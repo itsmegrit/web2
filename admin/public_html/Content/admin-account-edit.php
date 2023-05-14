@@ -1,4 +1,4 @@
-<form name="AdminAccountEdit" onsubmit="return EditAccount()" class="AdminAccountEdit">
+<form name="AdminAccountEdit" onsubmit="return EditAccount()" class="AdminAccountEdit" action="admin.php?id=tk" method="POST">
         <div class="AdminAccountEditBar">
         <a href="admin.php?id=tk" class="admin-account-Edit-back" style="text-decoration: none;"><< Trở về<a> 
         </div>    
@@ -82,10 +82,8 @@
     <script>
         function EditAccount(){
             var password=document.AdminAccountEdit.AdmintxtPassword
-            var alert=document.AdminAccountEdit.AdmintxtAlert
             if(!password.value){
-                alert.type="text"
-                alert.value="Hãy nhập mật khẩu từ 6-15 ký tự,số"
+                alert("Hãy nhập mật khẩu từ 6-15 ký tự,số")
                 username.focus()
                 return false
             }
