@@ -22,9 +22,27 @@
             <i class="fas fa-shopping-cart header-mr-8px"></i>
             Giỏ hàng
           </div>
-          <div class="col-sm-3 d-flex justify-content-center align-items-center header-btn h-50 header-mr-16px">
-            <i class="fa-regular fa-user header-mr-8px  "></i>
-            Tài khoản
+          <div class="col-sm-4 d-flex justify-content-end align-items-center">
+            <div class="row">
+              <div class="dropdown">
+                <p class="fa-regular fa-user"></p>
+                <a href="login.php">
+                  <?php session_start();
+                  if (isset($_SESSION['loggedIN'])) {
+                    echo $_SESSION['loggedIN'];
+                  } else {
+                    echo "Tài khoản";
+                  }
+                  ?>
+
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="index1.php?action=tk&id=1" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Thông tin cá nhân</a>
+                  </li>
+                  <li><a class="dropdown-item" href="logout.php"> Đăng xuất </a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
