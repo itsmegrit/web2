@@ -29,6 +29,7 @@
             <input type="hidden" name="id" value="tk"></br>
         </div>
     </div>
+</form>
     <style>
         .AdminAccountAdd{
             overflow: auto;
@@ -65,7 +66,7 @@
             var password=document.AdminAccountAdd.AdmintxtPassword
             var repassword=document.AdminAccountAdd.AdmintxtRepassword
             var email=document.AdminAccountAdd.AdmintxtEmail
-            var checkpass= /\d{6,15}$/
+            var checkpass= /^[a-zA-Z0-9_\.\-\\!@#$%^&*()=+]{6,14}$/
             if(!username.value){
                 alert("Hãy nhập tên tài khoản")
                 username.focus()
@@ -93,4 +94,4 @@
             }
         return true
         }
-    </script>
+</script>

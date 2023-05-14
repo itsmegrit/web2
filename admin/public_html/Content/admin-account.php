@@ -1,7 +1,6 @@
 <div class="admin-account">
     <div class="admin-account-title"><label>Quản lý tài khoản</label></br>
     <ul>
-    <a href="admin.php?id=tk&action=restore" class="admin-account-button-restore" style="text-decoration: none;"><li>Khôi phục</li></a>
     <a href="admin.php?id=tk&action=add" class="admin-account-button-add" style="text-decoration: none;"><li>+ Thêm</li></a>
     </ul>
     </div>
@@ -72,15 +71,15 @@
         .admin-account-title li{
             display: inline;
         }
-        .admin-account-title ul a{
-            font-weight: 1000;
-            margin: 10px;
-            padding: 7px;
+        .admin-account-button-add{
+            margin-left: 90%;
+            padding: 5px;
+            font-size: 15px;
             color: white;
             background-color: blue;
             border-radius: 10px;
         }
-        .admin-account-title ul a:hover{
+        .aadmin-account-button-add:hover{
             background-color: chartreuse;
         }
         .admin-div-table-account{

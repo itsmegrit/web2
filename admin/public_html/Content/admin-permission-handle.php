@@ -13,18 +13,21 @@
         }
     }
     if(!$flag){
-        echo "Thêm thất bại do trùng tên quyền :$permissionname trong hệ thống";
-    }
+        $message="Thêm thất bại do trùng tên quyền :$permissionname trong hệ thống";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        }
     else{
     $result=$con->insertsql("quyen","VALUES ('$permissionid','$permissionname',1)");
     if($result){    
         foreach($perfunc as $id => $func){
         $con->insertsql("quyenvachucnang","VALUES ('$permissionid','$func')");
     }
-        echo "Thêm thành công";
+        $message="Thêm thành công";
+        echo "<script type='text/javascript'>alert('$message');</script>";
     }
     else{
-        echo "Thêm thất bại do trùng mã quyền: $permissionid trong hệ thống";
+        $message="Thêm thất bại do trùng mã quyền: $permissionid trong hệ thống";
+        echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
 }

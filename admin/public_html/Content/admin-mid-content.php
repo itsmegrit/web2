@@ -8,9 +8,6 @@
                 if($_GET["action"]=="edit"){
                     include 'admin-account-edit.php';
                 }
-                if($_GET["action"]=="restore"){
-                    include 'admin-account-restore.php';
-                }
                 break;
             case "q": 
                 if($_GET["action"]=="add"){

@@ -73,9 +73,6 @@
             border-radius: 10px;
             border: solid 1px rgb(200, 200, 200);
         }
-        /* .admin-table-permission tr{
-            border: solid black;
-        } */
         .admin-permission-button-add{
             margin-left: 90%;
             padding: 5px;
@@ -83,9 +80,6 @@
             color: white;
             background-color: blue;
             border-radius: 10px;
-        }
-        .admin-permission-button-add:hover{
-            background-color: chartreuse;
         }
         .admin-permission-button-add:hover{
             background-color: chartreuse;

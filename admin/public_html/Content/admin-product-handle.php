@@ -15,10 +15,12 @@ if(isset($_POST["AdmintxtProductID"])){
     if(isset($_POST["AdminProductAddDetailSubmit"])){
         $result=$con->insertsql("sanpham","VALUES ('$productID','$productname','$price','$provide','$quantity','$detail','$hinh1','$hinh2','$hinh3','$hinh4',1)");
         if($result){
-            echo "Thêm thành công";
+            $message="Thêm thành công";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         }
         else{
-            echo "Thêm thất bại do hệ thống có mã sản phẩm : $productID";
+            $message="Thêm thất bại do hệ thống có mã sản phẩm : $productID trong hệ thống";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         }
         foreach($category as $temp => $cate){
             $con->insertsql("chitietsanpham","VALUES ('$productID','$cate')");

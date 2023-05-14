@@ -16,10 +16,12 @@
         if($flag){
         $date=date("Y-m-d H:i:s", time());
         $con->insertsql("taikhoan","VALUES ($idac,'$_POST[AdmintxtUsername]','$password','$date',1,'$perac')");
-        echo "Thêm thành công";
+        $message="Thêm thành công";
+        echo "<script type='text/javascript'>alert('$message');</script>";
         }
         else{
-            echo "Thêm thất bại do trùng tên tài khoản: $_POST[AdmintxtUsername]";
+            $message="Thêm thất bại do trùng tên tài khoản: $_POST[AdmintxtUsername]";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         }
     }
     if(isset($_POST["AdminAccountEditDetailSubmit"])){
@@ -32,13 +34,7 @@ if(isset($_GET["function"])&&isset($_GET["idaccount"])){
     if($_GET["function"]=="Xóa"){
         $conn = new Connect();
         $result = $conn->editsql("taikhoan","mataikhoan='$_GET[idaccount]'","trangthai='0'");
-        // echo "<script>alert('Xóa thành công')</script>";        
-        $conn->closeConnect();
-}
-if($_GET["function"]=="Khôi phục"){
-        $conn = new Connect();
-        $result = $conn->editsql("taikhoan","mataikhoan='$_GET[idaccount]'","trangthai='1'");
-        // echo "<script>alert('Xóa thành công')</script>";        
+        echo "<script>alert('Xóa thành công')</script>";        
         $conn->closeConnect();
 }
     header("Location:admin.php?id=tk");

@@ -49,6 +49,7 @@
             
         </div>
     </div>
+</form>
     <style>
         .AdminAccountEdit{
             overflow: auto;
@@ -82,9 +83,15 @@
     <script>
         function EditAccount(){
             var password=document.AdminAccountEdit.AdmintxtPassword
+            var checkpass= /^[a-zA-Z0-9_\.\-\\!@#$%^&*()=+]{6,14}$/
             if(!password.value){
                 alert("Hãy nhập mật khẩu từ 6-15 ký tự,số")
-                username.focus()
+                password.focus()
+                return false
+            }
+            if(!checkpass.test(password.value)){
+                alert("Sai định dạng mật khẩu")
+                password.focus()
                 return false
             }
             alert("Chỉnh sửa thành công")
