@@ -49,10 +49,9 @@ $productdetail = $conn->selectsql("sanpham", "*", "where sanpham.masanpham='$_GE
               <div class="action d-flex">
                 <button class="addtocart margin-r-8px">
                   <div class="pretext">
-                    <a href="./add_to_cart.php?productID=<?php echo $row['masanpham'] ?>"><i class="fas fa-cart-plus"></i> Thêm</a>
+                    <a class="add-to-cart-btn" href="./add_to_cart.php?productID=<?php echo $row['masanpham'] ?>"><i class="fas fa-cart-plus"></i> Thêm</a>
                   </div>
                 </button>
-                <input class="numberstyle" type="number" min="1" step="1" value="1">
               </div>
             <?php }
             ?>

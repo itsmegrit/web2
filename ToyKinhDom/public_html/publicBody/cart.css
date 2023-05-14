@@ -8,6 +8,12 @@
   border-collapse: collapse;
 }
 
+.cart-container {
+  overflow-y: scroll;
+  min-height: 520px;
+  max-height: 1200px;
+}
+
 .table-cart th,
 .table-cart td {
   padding: 10px;

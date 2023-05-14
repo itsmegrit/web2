@@ -32,7 +32,7 @@
               if (isset($_SESSION['loggedIN'])) {
                 echo $_SESSION['loggedIN'];
               } else {
-                echo "Tài khoản";
+                echo "Login";
               }
               ?>
 
