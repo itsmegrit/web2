@@ -2,11 +2,12 @@
   <div class="header-container">
     <div class="row">
       <div class="col-sm-2">
-        <img class="img-responsive" src="./public_html/img/logo.png" alt="Chania" id="">
+        <a href="/web2/ToyKinhDom/index1.php"><img class="img-responsive" src="./public_html/img/logo.png" alt="Chania" id=""></a>
+
       </div>
       <div class="col-sm-5 d-flex align-items-center">
         <div class="header-ml-76px input-group w-75 header-h-32px">
-          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+          <input type="search" class="form-control rounded" placeholder="Tìm kiếm" aria-label="Search" aria-describedby="search-addon" />
           <button type="button" class="btn btn-outline-primary">
             <i class="fas fa-search"></i>
           </button>
@@ -19,12 +20,14 @@
             Đơn hàng
           </div>
           <div class="col-sm-3 d-flex justify-content-center align-items-center header-btn h-50">
-            <i class="fas fa-shopping-cart header-mr-8px"></i>
-            Giỏ hàng
+            <a href="./index1.php?action=cart" class='header-account-link account-btn'>
+              <i class="fas fa-shopping-cart header-mr-8px"></i>
+              Giỏ hàng
+            </a>
           </div>
-          <div class="dropdown col-sm-3 header-btn h-50 header-mr-16px">
+          <div class="dropdown col-sm-3 header-mr-16px ">
             <p class="fa-regular fa-user header-mr-8px mb-0"></p>
-            <a href="login.php" class='header-account-link'>
+            <a href="login.php" class='header-account-link account-btn'>
               <?php session_start();
               if (isset($_SESSION['loggedIN'])) {
                 echo $_SESSION['loggedIN'];

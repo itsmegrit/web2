@@ -30,8 +30,11 @@
   }
 }
 
+.dropdown {
+  position: absolute;
+}
+
 .dropdown .account-dropdown {
-  margin-top: 20px;
 }
 
 .header-mr-8px {
@@ -71,4 +74,8 @@
 
 .mb-0 {
   margin-bottom: 0;
+}
+
+.account-btn {
+  color: #000;
 }
