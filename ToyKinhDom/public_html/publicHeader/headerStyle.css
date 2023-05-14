@@ -22,12 +22,16 @@
 
 .header-btn:hover {
   cursor: pointer;
-  background-color: blueviolet;
+  box-shadow: 8px 8px #99bdff;
+  transition: 0.3s;
 }
 
 .header-btn {
-  border-bottom: 1px solid #000;
-  border-radius: 8px;
+  border: 2px solid #3c73ff;
+  background-color: #3c73ff;
+  border-radius: 20px;
+  color: #fff;
+  transition: 0.3s;
 }
 
 /*# sourceMappingURL=headerStyle.css.map */
