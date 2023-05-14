@@ -72,14 +72,3 @@
 .mb-0 {
   margin-bottom: 0;
 }
-
-.extended-dropdown::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: 0;
-  width: 100%;
-  height: 50px; /* Đặt chiều cao của phần kéo dài */
-  background-color: rgba(0, 0, 0, 0.5); /* Đặt màu nền trong suốt */
-  pointer-events: none; /* Không ảnh hưởng đến sự kiện click */
-}

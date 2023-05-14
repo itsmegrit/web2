@@ -37,6 +37,15 @@
             <ul class="dropdown-menu account-dropdown extended-dropdown">
               <li><a href="index1.php?action=tk&id=1" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Thông tin cá nhân</a>
               </li>
+              <?php
+              // ADMIN
+              if (isset($_SESSION['loggedIN'])) {
+                if (!($_SESSION['quyen'] == 'User')) {
+                  echo "<li><a href='admin.php' class='dropdown-item' >Quản lí</a>
+                  </li>";
+                }
+              }
+              ?>
               <li><a class="dropdown-item" href="logout.php"> Đăng xuất </a></li>
             </ul>
           </div>
@@ -76,10 +85,15 @@
         if ($user->num_rows < 0 || $user->num_rows == 0) {
           $count = $conn->selectsql("nguoidung");
           $count = $count->num_rows + 1;
-          $data = $conn->insertsql("nguoidung", "values ('$count','$fullname','$phone','$address',' $email','002','$_SESSION[idAccount]')");
+          if ($_SESSION['quyen'] == 'User') {
+            $data = $conn->insertsql("nguoidung", "values ('$count','$fullname','$phone','$address',' $email','002','$_SESSION[idAccount]')");
+          } else {
+            $data = $conn->insertsql("nguoidung", "values ('$count','$fullname','$phone','$address',' $email','001','$_SESSION[idAccount]')");
+          }
         }
       }
     }
+
     // else {
     //   $message = "Cần phải đăng nhập trước khi nhập thông tin ";
     //       echo "<script type='text/javascript'>alert('$message');</script>";
