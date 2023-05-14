@@ -3,9 +3,9 @@
   $conn=new Connect();
   $product=$conn->selectsql("theloai,chitietsanpham,sanpham","*","where theloai.matheloai=chitietsanpham.matheloai  AND sanpham.masanpham = chitietsanpham.masanpham ");
 ?>
-<div class="commonLayout body ">
-  <div class="container">
-    <div class="row mt-6">
+<div class="commonLayout">
+  <div class="container-fluid">
+    <div class="row ">
         <div class="row">
           <h2>Sản phẩm mới nhất</h2>
         </div>
@@ -22,8 +22,6 @@
             
               <img class="img-1" src="./public_html/img/<?php echo $row['hinhanh1']?>">
               <img class="img-2" src="./public_html/img/<?php echo $row['hinhanh2']?>">
-           
-           
           </div>
           <div class="product-content">
             <h3 class="title"><a href="index1.php?action=sanpham&id=<?php echo $row['masanpham']?>"><?php echo $row['tensanpham']?></a></h3>
@@ -36,9 +34,6 @@
       <?php
      }
       ?>
-     <div>
-      <a href="logout.php">Đăng xuất</a>
-     </div>
   </div>
 </div>
 </div>

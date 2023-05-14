@@ -15,12 +15,15 @@
   <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap-utilities.min.css">
   <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap.rtl.min.css">
-  <link rel="stylesheet" type="text/css" href="./public_html/publicHeader/headerStyle.css?<?php echo time(); ?>">
-  <link rel="stylesheet" type="text/css" href="./public_html/publicBody/bodyStyle.css?<?php echo time(); ?>">
-  <link rel="stylesheet" type="text/css" href="./public_html/publicFooter/footerStyle.css?<?php echo time(); ?>">
-  <link rel="stylesheet" type="text/css" href="./public_html/publicBody/productdetail.css?<?php echo time(); ?>">
+  <link rel="stylesheet" type="text/css" href="./public_html/publicHeader/headerStyle.css?">
+  <link rel="stylesheet" type="text/css" href="./public_html/publicBody/bodyStyle.css?">
+  <link rel="stylesheet" type="text/css" href="./public_html/publicFooter/footerStyle.css?">
+  <link rel="stylesheet" type="text/css" href="./public_html/publicBody/productdetail.css?">
   <link rel="stylesheet" href="./includes/fontawesome-free-6.4.0-web/css/fontawesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+ 
 </head>
 
 <body>

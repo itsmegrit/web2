@@ -1,12 +1,33 @@
 .header-container {
     padding: 10px;
-    padding-top: 20pxpu;
+    padding-top: 20px;
     background-color: rgb(255, 255, 255);
 }
 
 .menu-nav a {
     color: rgb(255, 255, 255);
     font-weight: bold;
+}
+
+.modal-header h5 {
+    color: black;
+    font-family: "Montserrat";
+}
+
+.form-control {
+    width: 40%;
+}
+
+@media all and (min-width: 992px) {
+    .dropdown-menu {
+        display: none;
+    }
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .dropdown-menu {
+        margin-top: 0;
+    }
 }
 
 

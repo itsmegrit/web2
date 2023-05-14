@@ -18,15 +18,15 @@
      width: 50%;
  }
  
- h6 {
+ .row .col-sm-4 .footerform h6 {
      color: aliceblue;
  }
  
- h3 {
+ .row .col-sm-4 .footerform h3 {
      color: red;
  }
  
- h5 {
+ .row .col-sm-4 .footerform h5 {
      color: aliceblue;
  }
  

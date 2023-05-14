@@ -15,7 +15,6 @@
                 ?>
 				<div class="wrapper row">
 					<div class=" col-md-6">
-		
 						<div class="preview-pic tab-content">
 						  <div class="tab-pane active" id="pic-1"><img class="img-1" src="./public_html/img/<?php echo $row['hinhanh1']?>"></div>
 						  <div class="tab-pane" id="pic-2"><img class="img-1" src="./public_html/img/<?php echo $row['hinhanh2']?>"></div>

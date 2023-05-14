@@ -46,7 +46,8 @@
     opacity: 1;
 }
 
-.product-grid .product-hot-label,
+
+/* .product-grid .product-hot-label,
 .product-grid .product-discount-label {
     color: #fff;
     background: #ff6f00;
@@ -63,7 +64,7 @@
     background: #ff3939;
     left: auto;
     right: 10px;
-}
+} */
 
 
 /* .product-grid .product-view {
@@ -93,7 +94,8 @@
   background: #ff6f00;
 } */
 
-.product-grid .product-links {
+
+/* .product-grid .product-links {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -141,7 +143,7 @@
     color: #fff;
     background: #ff6f00;
     border-color: #ff6f00;
-}
+} */
 
 .product-grid .product-content {
     background: #fff;
@@ -181,7 +183,7 @@
 }
 
 .product-grid .price {
-    color: #a3a3a3;
+    color: #ffffff;
     font-size: 15px;
     font-weight: 500;
 }

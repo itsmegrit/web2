@@ -23,14 +23,25 @@
           </div>
           
           <div class="col-sm-4 d-flex justify-content-end align-items-center">
+            <div class="row">
+            <div class="dropdown">
             <p class="fa-regular fa-user"></p>
-            <p><a href="login.php"> <?php session_start();
+            <a href="login.php"> <?php session_start();
             if(isset($_SESSION['loggedIN'])){
               echo $_SESSION['loggedIN'];
             }else {
               echo "Tài khoản";
             }
-            ?></a></p>
+            ?>
+            
+          </a>
+            <ul class="dropdown-menu">
+              <li><a href="index1.php?action=tk&id=1" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Thông tin cá nhân</a>
+            </li>
+              <li><a class="dropdown-item" href="logout.php"> Đăng xuất </a></li>
+		        </ul>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -55,5 +66,109 @@
   </div>
     </nav>
     </div>
+    <div class="modal  " id="exampleModal" tabindex="-1"  aria-labelledby="exampleModalLabel" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thông tin cá nhân</h5>
+        <button type="button" class="btn-close mx-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="ajax-infor.php" name="form1">
+        <div class= "form-floating mb-4">
+         
+          <input type="text" class="form-control " id="floatingUsername"  placeholder="FullName" name="textName">
+          <label for="floatingInputUsername">Họ và tên</label>
+        </div>
+        <div  class= "form-floating mb-4">
+        <input type="text" class="form-control " id="floatingPhone"  placeholder="Phone"name="textPhone">
+          <label for="floatingInputUsername">Số điện thoại</label>
+        </div>
+        <div  class= "form-floating mb-4">
+        <input type="text" class="form-control " id="floatingAddress"  placeholder="Address"name="textAddress">
+          <label for="floatingInputUsername">Địa chỉ</label>
+        </div>
+        <div  class= "form-floating mb-2">
+        <input type="text" class="form-control " id="floatingEmail"  placeholder="Email"name="textEmail">
+          <label for="floatingInputUsername">Email</label>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <input class="btn  btn-primary btn-login "  id="infor" name ="infor" type="submit" value="Lưu">
+       
+      </div>
+    </div>
   </div>
 </div>
+  </div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+   $(document).ready(function(){
+        $("#infor").on('click', function(){
+            var fullname=$("#floatingUsername").val();
+            
+            var phone=$("#floatingPhone").val();
+           
+            var address=$("#floatingAddress").val();
+          
+            var email=$("#floatingEmail").val();
+           
+            var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+            var vnf_regex1 =/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+             if(fullname==""||fullname.length==0) {
+                alert("vui lòng nhập họ tên");
+                document.form1.textName.focus();
+            }
+            else if(phone==""||phone.length==0) {
+                alert("vui lòng nhập số điện thoại");
+                document.form1.textPhone.focus();
+            }
+            else if(vnf_regex.test(phone) == false) {
+              alert('Số điện thoại của bạn không đúng định dạng!');
+              document.form1.textPhone.focus();
+            }
+            else if(address==""||address.length==0) {
+                alert("vui lòng nhập địa chỉ");
+                document.form1.textAddress.focus();
+            }
+            else if(vnf_regex1.test(email) == false) {
+              alert('Email của bạn không đúng định dạng!');
+              document.form1.textEmail.focus();
+            }
+            else if(email=""||email.length==0) {
+                alert("vui lòng nhập địa chỉ email");
+                document.form1.textEmail.focus();
+            }
+           
+            else{
+                $.ajax({
+                  infor:1,
+                url:'./public_html/publicHeader/ajax-infor.php',
+                method: 'POST',
+                data:{
+                  infor:1,
+                    fullnamePHP: fullname,
+                    phonePHP: phone,
+                    addressPHP:address,
+                    emailPHP:email,
+                },
+                success:function(response){
+                    if(response.indexOf('success')>=0){
+                        window.location='index1.php';
+                    }
+                   
+                },
+                dataType:'text'
+            });
+            }
+        
+        });
+    });
+</script>

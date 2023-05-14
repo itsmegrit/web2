@@ -47,8 +47,6 @@
      }
       ?>
   </div>
-  <div>
-      <a href="logout.php">Đăng xuất</a>
-     </div>
+  
 </div>
 </div>
