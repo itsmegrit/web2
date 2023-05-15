@@ -1,17 +1,34 @@
+
 <div class="commonLayout">
   <div class="header-container">
     <div class="row">
       <div class="col-sm-2">
-        <a href="/web2/ToyKinhDom/index1.php"><img class="img-responsive" src="./public_html/img/logo.png" alt="Chania" id=""></a>
-
+        <a href="index1.php"><img class="img-responsive" src="./public_html/img/logo.png" alt="Chania" id=""></a>
       </div>
       <div class="col-sm-5 d-flex align-items-center">
-        <div class="header-ml-76px input-group w-75 header-h-32px">
-          <input type="search" class="form-control rounded" placeholder="Tìm kiếm" aria-label="Search" aria-describedby="search-addon" />
-          <button type="button" class="btn btn-outline-primary">
+        <div class="header-ml-76px input-group  header-h-32px">
+        <select class="form-select w-15" id="theloai">
+            <option value="0" selected>Tất cả</option>
+            <option value="1">Lego</option>
+            <option value="2">Siêu anh hùng</option>
+            <option value="3">Bé trai</option>
+            <option value="4">Bé gái</option>
+            <option value="5">Xe điều khiển</option>
+            <option value="6">Thú bông</option>
+            <option value="7">Búp bê</option>
+          </select>
+          <select class="form-select w-15" id="giatien">
+            <option value="0" selected>Tất cả</option>
+            <option value="0 and 500000">0-500,000</option>
+            <option value="500000 and 1000000">500,000-1tr</option>
+            <option value="1000000">1tr trở lên</option>
+          </select>
+          <input type="search" class="form-control rounded w-30" placeholder="Search" id="txtSearch" aria-label="Search" aria-describedby="search-addon" />
+          <button  class="btn btn-outline-primary" id="search">
             <i class="fas fa-search"></i>
           </button>
         </div>
+        
       </div>
       <div class="col-sm-5">
         <div class="row d-flex align-items-center justify-content-between h-100 ">
@@ -20,19 +37,17 @@
             Đơn hàng
           </div>
           <div class="col-sm-3 d-flex justify-content-center align-items-center header-btn h-50">
-            <a href="./index1.php?action=cart" class='header-account-link account-btn'>
-              <i class="fas fa-shopping-cart header-mr-8px"></i>
-              Giỏ hàng
-            </a>
+            <i class="fas fa-shopping-cart header-mr-8px"></i>
+            Giỏ hàng
           </div>
-          <div class="dropdown col-sm-3 header-mr-16px ">
+          <div class="dropdown col-sm-3 header-btn h-50 header-mr-16px">
             <p class="fa-regular fa-user header-mr-8px mb-0"></p>
-            <a href="login.php" class='header-account-link account-btn'>
+            <a href="login.php" class='header-account-link'>
               <?php session_start();
               if (isset($_SESSION['loggedIN'])) {
                 echo $_SESSION['loggedIN'];
               } else {
-                echo "Login";
+                echo "Tài khoản";
               }
               ?>
 
@@ -41,14 +56,13 @@
               <li><a href="index1.php?action=tk&id=1" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Thông tin cá nhân</a>
               </li>
               <?php
-              // ADMIN
-              if (isset($_SESSION['loggedIN'])) {
-                if (!($_SESSION['quyen'] == 'User')) {
+            if(isset($_SESSION['loggedIN'])){
+                if(!($_SESSION['quyen']=='User')){
                   echo "<li><a href='admin.php' class='dropdown-item' >Quản lí</a>
                   </li>";
-                }
+                }  
               }
-              ?>
+            ?>
               <li><a class="dropdown-item" href="logout.php"> Đăng xuất </a></li>
             </ul>
           </div>
@@ -88,21 +102,21 @@
         if ($user->num_rows < 0 || $user->num_rows == 0) {
           $count = $conn->selectsql("nguoidung");
           $count = $count->num_rows + 1;
-          if ($_SESSION['quyen'] == 'User') {
+          if($_SESSION['quyen']=='User'){
             $data = $conn->insertsql("nguoidung", "values ('$count','$fullname','$phone','$address',' $email','002','$_SESSION[idAccount]')");
-          } else {
+          }else{
             $data = $conn->insertsql("nguoidung", "values ('$count','$fullname','$phone','$address',' $email','001','$_SESSION[idAccount]')");
           }
         }
-      }
     }
-
+  }
+      
     // else {
     //   $message = "Cần phải đăng nhập trước khi nhập thông tin ";
     //       echo "<script type='text/javascript'>alert('$message');</script>";
     // }
     ?>
-    <div class="modal  " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -178,6 +192,35 @@
       else if (email = "" || email.length == 0) {
         alert("vui lòng nhập địa chỉ email");
         document.form1.textEmail.focus();
+      }
+    });
+  });
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#search").on(('click'),function () {
+      var searchdata=$('#txtSearch').val();
+      var theloai=$('#theloai').val();
+      var giatien=$('#giatien').val();
+      if(searchdata==""||searchdata.length==0){
+        alert("Vui lòng nhập sản phẩm cần tìm");
+      }
+      else{
+        $.ajax({
+                url:'public_html/publicHeader/ajax-search.php',
+                method: 'POST',
+                data:{
+                    searchPHP: searchdata,
+                    CatPHP:theloai,
+                    PricePHP:giatien,
+                },
+                success:function(data){
+                       $('#search-product').html(data);
+                    // console.log("thành công");
+                    
+                },
+                dataType:'text'
+            });
       }
     });
   });
