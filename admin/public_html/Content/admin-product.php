@@ -25,8 +25,10 @@
                     echo "<tr>
                     <td>$row[masanpham]</td>
                     <td>$row[tensanpham]</td>
-                    <td><img src='../../PictureProduct/$row[hinhanh1]'></td>
-                    <td>$row[giaban]</td>
+                    <td><img src='../../PictureProduct/$row[hinhanh1]'></td>";
+                    $giaban=number_format($row['giaban'],0,',',',');
+                    echo"
+                    <td>$giaban VNĐ</td>
                     <td><form action='admin.php' method='GET' onsubmit='return Del()'><input type='submit' class='admin-product-del' name='function' value='Xóa'>
                     <a href='admin.php?id=sp&&action=edit&&idproduct=$row[masanpham]' class='admin-product-Edit' style='text-decoration: none;'>Sửa</a> 
                     <input type='hidden' name='id' value='sp'>
@@ -112,7 +114,7 @@
         .admin-table-product{
         text-align: center; 
         font-size: 16px;
-        font-style: Times New Roman; 
+
         }
         .admin-table-product th,td{
             border-radius: 10px;

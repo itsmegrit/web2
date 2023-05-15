@@ -47,7 +47,7 @@
                 case "pdh":
                     include 'admin-input-product.php';break;
                 case "thk":
-                    echo "Bạn đang trong quản lý thống kê";break;
+                    include 'admin-thongke.php';break;
                 default: echo "default";break;
             }
     }

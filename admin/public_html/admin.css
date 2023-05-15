@@ -28,7 +28,7 @@
 .admin-mid-left{
     background-color:white;
     width: 19%;
-    height: 800px;
+    height: 500px;
     float: left;
     border: solid black;
     overflow: auto;
@@ -46,8 +46,9 @@
 }
 
 .admin-mid-content{
+    overflow: auto;
     width: 80%;
-    height: 800px;
+    height: 500px;
     padding: 20px;
     position: relative;
     border: solid black;
