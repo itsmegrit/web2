@@ -14,6 +14,7 @@ if (isset($_POST['login'])) {
     $_SESSION['loggedIN'] = $username;
     $_SESSION['idAccount'] = $id['mataikhoan'];
     $_SESSION['quyen'] = $id['tenquyen'];
+    exit("success");
   } else {
     exit("failed");
   }
@@ -107,6 +108,9 @@ if (isset($_POST['login'])) {
 
       });
     });
+
+
+
   </script>
 </body>
 

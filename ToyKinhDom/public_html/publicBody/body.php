@@ -3,7 +3,7 @@ include_once('./config/Connection.php');
 $conn = new Connect();
 $product = $conn->selectsql("sanpham", "*", "where tinhtrang = 1");
 ?>
-<div class="commonLayout">
+<div class="commonLayout " id="search-product">
   <div class="container-fluid">
     <div class="row ">
       <div class="row">
@@ -12,11 +12,7 @@ $product = $conn->selectsql("sanpham", "*", "where tinhtrang = 1");
     </div>
 
     <div class="row" id="body-product">
-      <?php
-      while ($row = mysqli_fetch_array($product)) {
 
-      }
-      ?>
     </div>
     <div class="row ">
       <?php
@@ -40,10 +36,28 @@ $product = $conn->selectsql("sanpham", "*", "where tinhtrang = 1");
 </div>
 
 <script>
-  $(".page-item").click(function (event) {
-    event.preventDefault(); // Ngăn chặn sự kiện mặc định
+  $(document).ready(function () {
+    $('.page-item').click(function (event) {
+      event.preventDefault(); // Ngăn chặn sự kiện mặc định
 
-    var soTrang = $(this).attr("soTrang");
+      var soTrang = $(this).attr('soTrang');
+      $.ajax({
+        url: 'public_html/publicbody/body-phantrang.php',
+        type: 'POST',
+        data: {
+          soTrang: soTrang
+        },
+        success: function (result) {
+          $('#body-product').html(result);
+        },
+        error: function (e) {
+          console.log(e);
+        }
+      });
+    });
+
+    var soTrang = 1; // Số trang mặc định
+
     $.ajax({
       url: 'public_html/publicbody/body-phantrang.php',
       type: 'POST',

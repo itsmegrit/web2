@@ -7,8 +7,23 @@
       </div>
       <div class="col-sm-5 d-flex align-items-center">
         <div class="header-ml-76px input-group w-75 header-h-32px">
-          <input type="search" class="form-control rounded" placeholder="Tìm kiếm" aria-label="Search" aria-describedby="search-addon" />
-          <button type="button" class="btn btn-outline-primary">
+          <select class="form-select w-15" id="theloai">
+            <option value="0" selected>Tất cả</option>
+            <option value="1">Lego</option>
+            <option value="2">Siêu anh hùng</option>
+            <option value="3">Bé trai</option>
+            <option value="4">Bé gái</option>
+            <option value="5">Xe điều khiển</option>
+            <option value="6">Thú bông</option>
+            <option value="7">Búp bê</option>
+          </select>
+          <select class="form-select w-15" id="giatien">
+            <option value="0" selected>Tất cả</option>
+            <option value="0 and 500000">0-500,000</option>
+            <option value="500000 and 1000000">500,000-1tr</option>
+          </select>
+          <input type="search" class="form-control rounded w-30" placeholder="Search" id="txtSearch" aria-label="Search" aria-describedby="search-addon" />
+          <button class="btn btn-outline-primary" id="search">
             <i class="fas fa-search"></i>
           </button>
         </div>
@@ -176,6 +191,46 @@
         document.form1.textEmail.focus();
       }
       else if (email = "" || email.length == 0) {
+        alert("vui lòng nhập địa chỉ email");
+        document.form1.textEmail.focus();
+      }
+    });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#infor").on('click', function () {
+      var fullname = $("#floatingUsername").val();
+
+      var phone = $("#floatingPhone").val();
+
+      var address = $("#floatingAddress").val();
+
+      var email = $("#floatingEmail").val();
+
+      var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+      var vnf_regex1 = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+      if (fullname == "" || fullname.length == 0) {
+        alert("vui lòng nhập họ tên");
+        document.form1.textName.focus();
+      }
+      else if (phone == "" || phone.length == 0) {
+        alert("vui lòng nhập số điện thoại");
+        document.form1.textPhone.focus();
+      }
+      else if (vnf_regex.test(phone) == false) {
+        alert('Số điện thoại của bạn không đúng định dạng!');
+        document.form1.textPhone.focus();
+      }
+      else if (address == "" || address.length == 0) {
+        alert("vui lòng nhập địa chỉ");
+        document.form1.textAddress.focus();
+      }
+      else if (vnf_regex1.test(email) == false) {
+        alert('Email của bạn không đúng định dạng!');
+        document.form1.textEmail.focus();
+      }
+      else if (email == "" || email.length == 0) {
         alert("vui lòng nhập địa chỉ email");
         document.form1.textEmail.focus();
       }

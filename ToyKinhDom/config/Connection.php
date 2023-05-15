@@ -13,6 +13,15 @@ class Connect
       die("Connection failed: " . $this->conn->connect_error);
     }
   }
+
+  public function countRows($table, $condition = '')
+  {
+    $sql = "SELECT COUNT(*) as count FROM $table $condition";
+    $result = mysqli_query($this->conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    return $row['count'];
+  }
+
   function closeConnect()
   {
     $this->conn->close();
