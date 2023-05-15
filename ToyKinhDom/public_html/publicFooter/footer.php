@@ -38,7 +38,7 @@
       <p><a href="#">- Điều khoản điều kiện</a></p>
     </div>
     <div class="col-sm-4 footerform">
-      <h5>HỖ TRỢ KHÁCH HÀNG</h5>
+      <h5 >HỖ TRỢ KHÁCH HÀNG</h5>
       <p><a href="#">- Chính sách bảo mật</a></p>
       <p><a href="#">- Chính sách bảo hành đổi trả hàng hóa</a></p>
       <p><a href="#">- Chính sách thanh toán</a></p>
@@ -54,5 +54,6 @@
       <p class="footer-reserved">© All rights reserved.</p>
     </div>
   </div>
+  
 </div>
 </div>

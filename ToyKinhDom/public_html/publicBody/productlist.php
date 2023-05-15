@@ -9,7 +9,6 @@
 <div class="commonLayout body ">
   <div class="container">
     <div class="row mt-6">
-      
         <div class="row">
           <h2><?php echo $row_title['tentheloai']?></h2>
         </div>
@@ -47,8 +46,6 @@
      }
       ?>
   </div>
-  <div>
-      <a href="logout.php">Đăng xuất</a>
-     </div>
+  
 </div>
 </div>

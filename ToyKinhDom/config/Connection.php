@@ -4,7 +4,7 @@ class Connect
   public $conn;
   function __construct()
   {
-    $servername = "localhost";
+    $servername = "localhost:3306";
     $username = "root";
     $password = "";
     $dbname = "toykingdom";

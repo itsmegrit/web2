@@ -1,0 +1,48 @@
+.container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.table-cart {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-container {
+  overflow-y: scroll;
+  min-height: 520px;
+  max-height: 1200px;
+}
+
+.table-cart th,
+.table-cart td {
+  padding: 10px;
+  text-align: left;
+}
+
+.table-cart th {
+  background-color: #f2f2f2;
+}
+
+.table-cart tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.total {
+  text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}

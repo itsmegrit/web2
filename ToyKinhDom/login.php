@@ -9,10 +9,12 @@
         $conn=new Connect();
         $username=$_POST['usernamePHP'];
         $password=$_POST['passwordPHP'];
-        $data=$conn->selectsql("taikhoan","mataikhoan","where  tentaikhoan='$username' AND matkhau='$password'");
+        $data=$conn->selectsql("taikhoan,quyen","mataikhoan,tenquyen","where  tentaikhoan='$username' AND matkhau='$password' AND taikhoan.maquyen=quyen.maquyen");
         if($data->num_rows>0){
+            $id=$data->fetch_assoc();
             $_SESSION['loggedIN']=$username;
-            $_SESSION['username']=$username;
+            $_SESSION['idAccount']=$id['mataikhoan'];
+            $_SESSION['quyen']=$id['tenquyen'];
             exit("success");
         }
         else{
@@ -29,11 +31,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap-utilities.min.css">
     <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="./includes/bootstrap-5.3.0-alpha1/dist/css/bootstrap.rtl.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.css">
     <link rel="stylesheet" href="style-signup.css">
     <title>Log in</title>
