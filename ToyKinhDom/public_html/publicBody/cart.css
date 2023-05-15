@@ -4,6 +4,8 @@
 }
 
 .table-cart {
+  margin-bottom: 20px;
+  border: 1px solid #f8f8f8;
   width: 100%;
   border-collapse: collapse;
 }
@@ -45,4 +47,44 @@
 
 .btn:hover {
   background-color: #45a049;
+}
+
+.order-form {
+  border: 1px solid #000;
+  border-radius: 4px;
+  gap: 10px;
+  padding: 8px;
+  margin: 0 auto;
+}
+
+.order-form label {
+  min-width: 30%;
+  align-items: center;
+  font-weight: bold;
+}
+
+.order-form label span {
+  margin-right: 10px;
+}
+
+.order-form input[type="text"],
+.order-form input[type="tel"],
+.order-form input[type="email"] {
+  margin-bottom: 8px;
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.order-form button[type="submit"] {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.order-form button[type="submit"]:hover {
+  background-color: #218838;
 }

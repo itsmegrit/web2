@@ -1,7 +1,7 @@
 <?php
 include_once('./config/Connection.php');
 $conn = new Connect();
-$product = $conn->selectsql("theloai,chitietsanpham,sanpham", "*", "where theloai.matheloai=chitietsanpham.matheloai  AND sanpham.masanpham = chitietsanpham.masanpham ");
+$product = $conn->selectsql("sanpham", "*", "where tinhtrang = 1");
 ?>
 <div class="commonLayout">
   <div class="container-fluid">
@@ -11,30 +11,52 @@ $product = $conn->selectsql("theloai,chitietsanpham,sanpham", "*", "where theloa
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="body-product">
       <?php
       while ($row = mysqli_fetch_array($product)) {
-        ?>
-        <div class="col-md-3 col-sm-6">
-          <a href="index1.php?action=sanpham&id=<?php echo $row['masanpham'] ?>">
-            <div class="product-grid">
-              <div class="product-image">
-                <img class="img-1" src="./public_html/img/<?php echo $row['hinhanh1'] ?>">
-                <img class="img-2" src="./public_html/img/<?php echo $row['hinhanh2'] ?>">
-              </div>
-              <div class="product-content">
-                <h3 class="title"><a href="index1.php?action=sanpham&id=<?php echo $row['masanpham'] ?>"><?php echo $row['tensanpham'] ?></a></h3>
-                <div class="price">
-                  <?php echo number_format($row['giaban'], 0, ',', ',') . 'VNĐ' ?>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
 
-        <?php
       }
       ?>
     </div>
+    <div class="row ">
+      <?php
+      include_once('./config/Connection.php');
+      $conn = new Connect();
+      $product = $conn->selectsql("sanpham");
+      $soTrang = floor($product->num_rows / 8) + 1;
+      ?>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+          <?php for ($i = 1; $i <= $soTrang; $i++) { ?>
+            <li soTrang='<?php echo $i ?>' class="page-item"><a class="page-link" href="">
+                <?php echo $i ?>
+              </a></li>
+          <?php } ?>
+        </ul>
+      </nav>
+    </div>
   </div>
 </div>
+
+<script>
+  $(".page-item").click(function (event) {
+    event.preventDefault(); // Ngăn chặn sự kiện mặc định
+
+    var soTrang = $(this).attr("soTrang");
+    $.ajax({
+      url: 'public_html/publicbody/body-phantrang.php',
+      type: 'POST',
+      data: {
+        soTrang: soTrang
+      },
+      success: function (result) {
+        $('#body-product').html(result);
+      },
+      error: function (e) {
+        console.log(e);
+      }
+    });
+  });
+
+</script>

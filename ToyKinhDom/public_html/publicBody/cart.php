@@ -51,7 +51,89 @@
           </tr>
         </tfoot>
       </table>
-      <a href="#" class="btn btn-success">Thanh toán</a>
+      <div class='row'>
+
+        <div class='col-sm-6'>
+          <h4>Thông tin người đặt</h4>
+          <?php
+          include_once('./config/Connection.php');
+          $conn = new Connect();
+          $idAccount = $_SESSION['idAccount'];
+          $user = $conn->selectsql("nguoidung", "*", "where nguoidung.mataikhoan='$idAccount'");
+          $row = mysqli_fetch_array($user);
+          ?>
+          <script>
+            function validateForm() {
+              // Lấy giá trị từ các trường input
+              var name = document.getElementById('name').value;
+              var phone = document.getElementById('phone').value;
+              var email = document.getElementById('email').value;
+              var address = document.getElementById('address').value;
+
+              // Kiểm tra điều kiện của từng trường
+              if (name === '') {
+                alert('Vui lòng nhập tên người nhận.');
+                return false;
+              }
+
+              if (phone === '') {
+                alert('Vui lòng nhập số điện thoại.');
+                return false;
+              }
+
+              // Sử dụng biểu thức chính quy để kiểm tra định dạng số điện thoại
+              var phonePattern = /^[0-9]{10}$/;
+              if (!phonePattern.test(phone)) {
+                alert('Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.');
+                return false;
+              }
+
+              if (email === '') {
+                alert('Vui lòng nhập email.');
+                return false;
+              }
+
+              // Sử dụng biểu thức chính quy để kiểm tra định dạng email
+              var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+              if (!emailPattern.test(email)) {
+                alert('Email không hợp lệ. Vui lòng kiểm tra lại.');
+                return false;
+              }
+
+              if (address === '') {
+                alert('Vui lòng nhập địa chỉ nhận hàng.');
+                return false;
+              }
+
+              // Nếu tất cả trường hợp validate đều pass, cho phép submit form
+              return true;
+            }
+          </script>
+
+          <form method="POST" action="./order.php" class="order-form" onsubmit="return validateForm()">
+            <div>
+              <label for="name"><span>Tên người nhận:</span></label>
+              <input type="text" id="name" name="name" value="<?php echo $row['tennguoidung'] ?>" required>
+            </div>
+            <div>
+              <label for="phone"><span>Số điện thoại:</span></label>
+              <input type="tel" id="phone" name="phone" value="<?php echo $row['sodienthoai'] ?>" required>
+            </div>
+            <div>
+              <label for="email"><span>Email:</span></label>
+              <input type="email" id="email" name="email" value="<?php echo $row['email'] ?>" required>
+            </div>
+            <div>
+              <label for="address"><span>Địa chỉ nhận hàng:</span></label>
+              <input type="text" id="address" name="address" value="<?php echo $row['diachi'] ?>" required>
+            </div>
+            <button type="submit" class="btn btn-success">Xác nhận</button>
+          </form>
+
+        </div>
+        <div class='col-sm-6'>
+        </div>
+      </div>
     </div>
   <?php } else {
     echo 'Giỏ hàng trống';
