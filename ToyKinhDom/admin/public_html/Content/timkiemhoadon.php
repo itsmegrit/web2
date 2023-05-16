@@ -1,7 +1,9 @@
 <!-- tìm theo date -->
 <?php
 // include('./config/Connection.php');
-include '/xampp/htdocs/web2/ToyKinhDom/config/Connection.php';  
+// include '/xampp/htdocs/web2/ToyKinhDom/config/Connection.php';  
+include '/web2-update-search/ToyKinhDom/admin/config/Connect.php' ;
+
 
 $con=new Connect();
     $datefrom =$_POST["datefrom"];

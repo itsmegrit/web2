@@ -1,7 +1,7 @@
-<div id="input-product-detail" style="display: <?php  if(isset($_GET['displayvalue']))
+<div id="input-product-detail" style="display: <?php  if(isset($_GET['displaydetailpnh']))
             {
-                $displayValue=$_GET['displayvalue'];
-            } echo $displayValue; ?>" >
+                $displaydetailValue=$_GET['displaydetailpnh'];
+            } echo $displaydetailValue; ?>" >
             <div id="input-product-detail-content">
             <a class="close" onclick="closeinputproduct()" href="?id=pdh"><i class="far fa-window-close"></i><a>
             <div id="titleinput-product-detail">

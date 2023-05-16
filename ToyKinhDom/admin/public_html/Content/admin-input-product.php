@@ -4,9 +4,11 @@
     </div>
       
     <?php 
-            include '/xampp/htdocs/web2/ToyKinhDom/config/Connection.php';  
-            include '/xampp/htdocs/web2/ToyKinhDom/admin/public_html/Content/admin-input-product-details.php';
-            include '/xampp/htdocs/web2/ToyKinhDom/admin/public_html/Content/admin-input-product-add.php'
+            // include '/xampp/htdocs/web2/ToyKinhDom/config/Connection.php';  
+            include '/web2-update-search/ToyKinhDom/admin/config/Connect.php' ;
+
+            include '/web2-update-search/ToyKinhDom/admin/public_html/Content/admin-input-product-details.php';
+            include '/web2-update-search/ToyKinhDom/admin/public_html/Content/admin-input-product-add.php'
     ?>
     <div class="admin-div-table-input-product" id="admin-div-table-input-product">
     <table class="admin-table-input-product" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
@@ -29,7 +31,7 @@
                           <td>$row[nhacungcap]</td>
                           <td>$row[manhanvien]</td>
                           <td>$row[tongtien]</td>                          
-                          <td> <a href='?id=pdh&&displayvalue=block&&mapnh=$row[maphieunhap]&&manv=$row[manhanvien]&&tongtien=$row[tongtien]' class='showdetail' >Chi tiết</a> </td>
+                          <td> <a href='?id=pdh&&displaydetailpnh=block&&mapnh=$row[maphieunhap]&&manv=$row[manhanvien]&&tongtien=$row[tongtien]' class='showdetail' >Chi tiết</a> </td>
                       </tr>";
                   }
               }
