@@ -1,0 +1,85 @@
+#header {
+  background-color: rgb(223, 208, 208);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.header-container {
+  padding: 4px;
+  padding-top: 20px;
+}
+
+.menu-nav a {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.modal-header h5 {
+  color: black;
+  font-family: "Montserrat";
+}
+
+.form-control {
+  width: 40%;
+}
+
+@media all and (min-width: 992px) {
+  .dropdown-menu {
+    display: none;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .dropdown-menu {
+    margin-top: 0;
+  }
+}
+
+.dropdown {
+  position: absolute;
+}
+
+.dropdown .account-dropdown {
+}
+
+.header-mr-8px {
+  margin-right: 8px;
+}
+
+.header-mr-16px {
+  margin-right: 16px;
+}
+
+.header-ml-76px {
+  margin-left: 76px;
+}
+
+.header-h-32px {
+  height: 32px;
+}
+
+.header-btn:hover {
+  cursor: pointer;
+  box-shadow: 8px 8px #99bdff;
+  transition: 0.3s;
+}
+
+.header-btn {
+  border: 2px solid #3c73ff;
+  background-color: #3c73ff;
+  border-radius: 20px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.header-account-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.account-btn {
+  color: #000;
+}

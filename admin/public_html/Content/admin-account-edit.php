@@ -7,7 +7,6 @@
         </div>
         <div class="AdminAccountEditDetail">
         <?php 
-        include '..\\config/Connect.php';
         $conn=new Connect();
         $result = $conn->selectsql("taikhoan as tk,quyen as q","*","where tk.maquyen=q.maquyen and mataikhoan=$_GET[idaccount]");
         $per=$conn->selectsql("quyen");

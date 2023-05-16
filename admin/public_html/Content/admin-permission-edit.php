@@ -5,7 +5,6 @@
         </div>
         <div class="AdminpermissionEditDetail">
             <?php 
-            include '..\\config/Connect.php';
             $con=new Connect();
             $result=$con->selectsql("chucnang");
             $sql=$con->selectsql("quyen","*","where maquyen='$_GET[idpermission]'");

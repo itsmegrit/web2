@@ -10,7 +10,6 @@
             <input type="text" name="Admintxtpermissionname" placeholder="Nhập tên quyền"  class="Admintxtpermissionname"></br>
             <div class="Permissionfunction">
             <?php 
-            include '..\\config/Connect.php';
             $con=new Connect();
             $result=$con->selectsql("chucnang");
             //1 sản phẩm thuộc nhiều thể loại

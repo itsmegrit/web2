@@ -5,7 +5,6 @@
     </ul>
     </div>
     <?php
-            include '..\\config/Connect.php';
             include 'admin-account-handle.php';
     ?>
     <div class="admin-div-table-account">

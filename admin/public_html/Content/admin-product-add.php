@@ -11,7 +11,6 @@
             <label>Thể loại: </label>
             <div class="Productcategory">
             <?php 
-            include '..\\config/Connect.php';
             $con=new Connect();
             $result=$con->selectsql("theloai");
             //1 sản phẩm thuộc nhiều thể loại            

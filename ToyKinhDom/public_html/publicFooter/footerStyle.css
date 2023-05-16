@@ -1,0 +1,63 @@
+#footer {
+  padding-top: 16px;
+  background-color: rgb(223, 208, 208);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bgfooter {
+  background-color: rgb(223, 208, 208);
+}
+
+.input-group {
+  width: 40%;
+}
+
+.btn-email {
+  background-color: yellow;
+}
+
+.btn-email:hover {
+  background-color: red;
+}
+
+.input-group img {
+  width: 50%;
+}
+
+.row .col-sm-4 .footerform h6 {
+  color: aliceblue;
+}
+
+.row .col-sm-4 .footerform h3 {
+  color: red;
+}
+
+.row .col-sm-4 .footerform h5 {
+  color: aliceblue;
+}
+
+.social a {
+  margin-right: 10px;
+}
+
+.col-sm-15 img {
+  width: 10%;
+  height: 80%;
+  position: relative;
+  left: 50%;
+}
+
+.footer-reserved {
+  position: relative;
+  left: 75%;
+}
+
+.row .col-sm-4 a {
+  text-decoration: none;
+  color: black;
+}
+
+.row .col-sm-4 a:hover {
+  color: red;
+  opacity: 0.5s;
+}

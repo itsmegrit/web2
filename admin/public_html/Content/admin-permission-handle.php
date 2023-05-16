@@ -35,13 +35,13 @@
     if(isset($_POST["AdminpermissionEditDetailSubmit"])){
     $con->delsql("quyenvachucnang","maquyen='$permissionid'");
     $per=$con->selectsql("quyen");
-    $flag=true;
+    $flag=1;
     while($row=$per->fetch_assoc()){
         if($row["tenquyen"]==$permissionname){
-            $flag=false;
+            $flag++;
         }
     }
-    if(!$flag){
+    if($flag>2){
         echo "Chỉnh sửa thất bại do trùng tên quyền : $permissionname trong hệ thống";
     }
     else{

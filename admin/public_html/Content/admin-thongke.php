@@ -6,7 +6,6 @@
         <select name="Category">
             <option selected value="0">Tất cả</option>
     <?php 
-        include '..\\config/Connect.php';
         $con=new Connect();
         $result=$con->selectsql("theloai");
         if($result->num_rows>0){

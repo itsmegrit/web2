@@ -15,7 +15,6 @@
             <th>Chức năng</th>
         </tr>
        <?php 
-        include '..\\config/Connect.php';
         $conn=new Connect();
         $result = $conn->selectsql("taikhoan as tk,quyen as q","*","where tk.maquyen=q.maquyen");
             if ($result->num_rows > 0) {

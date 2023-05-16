@@ -10,7 +10,6 @@
             <th>Chức năng</th>
         </tr>
        <?php 
-       include '..\\config/Connect.php';
        include 'admin-permission-del.php';
        include 'admin-permission-handle.php';
        $conn=new Connect();

@@ -5,7 +5,6 @@
         </div>
         <div class="AdminProductEditDetail">
             <?php 
-            include '..\\config/Connect.php';
             $con=new Connect();
             $id=$_GET['idproduct'];
             $result=$con->selectsql("sanpham","*","where masanpham='$id'");

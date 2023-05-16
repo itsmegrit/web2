@@ -1,48 +1,50 @@
 <form class="admin-input-product">
-    <div class="admin-input-product-title"><label>Quản lý phiếu đặt hàng</label></br>
-    <a href="admin.php?id=pdh&action=add" class="admin-input-product-button-add" style="text-decoration: none;">+ Thêm<a>
+    <div class="admin-input-product-title"><label>Quản lý phiếu nhập</label></br>
+    <a href="admin.php?id=pdh&action=add&&displayadd=block" class="admin-input-product-button-add" style="text-decoration: none;">+ Thêm<a>
     </div>
-    <div class="admin-div-table-input-product">
+    
+    <div class="admin-div-table-input-product" id="admin-div-table-input-product">
     <table class="admin-table-input-product" cellspacing="1px" cellpadding="5px" width="100%" height="100%">
         <tr>
-            <th>Mã phiếu đặt hàng</th>
-            <th>Thời gian đặt hàng</th>
+            <th>Mã phiếu nhập</th>
+            <th>Ngày lập</th>
             <th>Nhà cung cấp</th>
+            <th>Mã nhân viên</th>
             <th>Tổng tiền</th>
         </tr>
        <?php 
-            // $servername = "localhost";
-            // $username = "QLBH";
-            // $password = "123456";
-            // $dbname = "web2";
-            
-            // // Create connection
-            // $conn = new mysqli($servername, $username, $password, $dbname);
-            // // Check connection
-            // if ($conn->connect_error) {
-            //   die("Connection failed: " . $conn->connect_error);
-            // }
-            
-            // $sql = "SELECT * FROM input-product";
-            // $result = $conn->query($sql);
-            
-            // if ($result->num_rows > 0) {
-            //   // output data of each row
-            //   while($row = $result->fetch_assoc()) {
-            //     echo '<tr>
-            //         <td>'.$row["ID_input-product"].'</td>
-            //         <td>'.$row["Username"].'</td>
-            //         <td>'.$row["Password"].'</td>
-            //         <td>'.$row["ID_Permission"].'</td>
-            //         <td><input type="submit" value="Xóa" id="'.$row["ID_input-product"].'"></td>
-            //     </tr>';
-            //   }
-            // } else {
-            //   echo "0 results";
-
-            // }
-            // $conn->close();
-        ?>
+              $con=new Connect();
+              if(!isset($_POST["sotrang"])){
+              $result=$con->selectsql("phieunhap","*","limit 0,5");
+              if($result->num_rows>0){
+                  while($row=$result->fetch_assoc()){
+                          echo "<tr>
+                          <td>$row[maphieunhap]</td>
+                          <td>$row[ngaylap]</td>
+                          <td>$row[nhacungcap]</td>
+                          <td>$row[manhanvien]</td>
+                          <td>$row[tongtien]</td>                          
+                          <td> <a href='?id=pdh&&displaydetailpnh=block&&mapnh=$row[maphieunhap]&&manv=$row[manhanvien]&&tongtien=$row[tongtien]' class='showdetail' >Chi tiết</a> </td>
+                      </tr>";
+                  }
+              }
+                  $result=$con->selectsql("phieunhap");
+                  $sotrang=floor($result->num_rows/5)+1;
+                  //Các nút trang hóa đơn
+                  echo "</table></div><div class='admin-phieunhap-button-phantrang'>
+                  <ul>";
+                  for($i=1;$i<=$sotrang;$i++){
+                      if($i==1){
+                          echo "<li class='adminphieunhap-button-phantrang' sotrang='$i' theloai='donhang'  style='background-color: gray;'>$i</li>";
+                      }
+                      else{
+                          echo "<li class='adminphieunhap-button-phantrang' sotrang='$i'  theloai='donhang'>$i</li>";
+                      }
+                  }
+                  echo "</ul>";
+              }
+              $con->closeConnect();
+          ?>
     </table>
     </div>
     <style>
@@ -79,5 +81,15 @@
         .admin-input-product-button-add:hover{
             background-color: chartreuse;
         }
+        .admin-phieunhap-button-phantrang li{
+            display: inline;
+            border: solid black;
+            padding: 5px 10px;
+            margin: 10px;
+        }
+        .admin-phieunhap-button-phantrang ul{
+            margin: 40px;
+        }
     </style>
+    
 </form>

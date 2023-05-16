@@ -3,7 +3,6 @@
     <a href="admin.php?id=sp&action=add" class="admin-product-button-add" style="text-decoration: none;">+ Thêm<a>
     </div>
     <?php 
-           include '..\\config/Connect.php';
            include 'admin-product-handle.php';
     ?>
     <div class="admin-div-table-product" id="admin-div-table-product">
