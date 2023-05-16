@@ -4,7 +4,7 @@
     <div class="admin-thongke-search"><label>Thống kê theo khoảng thời gian: </label>
         <input type="date" name="thongkestart"> - <input type="date" name="thongkeend">
         <select name="Category">
-            <option selected value="0">Tất cả</option>
+            <option selected value="0">Tất cả (thể loại)</option>
     <?php 
         $con=new Connect();
         $result=$con->selectsql("theloai");
@@ -69,7 +69,7 @@
                 alert("Hãy chọn ngày bắt đầu thống kê")
                 return false
             }
-            if(!endv.value){
+            if(!end.value){
                 alert("Hãy chọn ngày kết thúc thống kê")
                 return false
             }
